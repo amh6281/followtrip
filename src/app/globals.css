@@ -1,26 +1,88 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* =========================
+   FollowTrip – Tailwind v4 @theme
+   컬러는 --color-* 네임스페이스 → bg-background, text-primary 등 유틸 생성
+========================= */
+
+@theme {
+  /* Base */
+  --color-background: #ffffff;
+  --color-foreground: #0f172a;
+
+  /* Brand */
+  --color-primary: #2563eb;
+  --color-primary-foreground: #ffffff;
+
+  --color-accent: #38bdf8;
+  --color-accent-foreground: #0f172a;
+
+  /* Semantic */
+  --color-success: #16a34a;
+  --color-success-foreground: #ffffff;
+
+  --color-warning: #f59e0b;
+  --color-warning-foreground: #0f172a;
+
+  --color-error: #dc2626;
+  --color-error-foreground: #ffffff;
+
+  /* Neutral */
+  --color-muted: #e5e7eb;
+  --color-muted-foreground: #64748b;
+
+  --color-border: #e2e8f0;
+  --color-input: #e2e8f0;
+
+  /* Mood */
+  --color-cool: #22d3ee;
+  --color-cool-foreground: #0f172a;
+
+  --color-choco: #7c2d12;
+  --color-choco-foreground: #fff7ed;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+/* Dark mode – @layer theme + @variant dark 로 같은 변수 덮어쓰기 */
+@layer theme {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    @variant dark {
+      --color-background: #0b1220;
+      --color-foreground: #e5e7eb;
+
+      --color-primary: #3b82f6;
+      --color-primary-foreground: #020617;
+
+      --color-accent: #38bdf8;
+      --color-accent-foreground: #020617;
+
+      --color-success: #22c55e;
+      --color-success-foreground: #052e16;
+
+      --color-warning: #fbbf24;
+      --color-warning-foreground: #451a03;
+
+      --color-error: #ef4444;
+      --color-error-foreground: #450a0a;
+
+      --color-muted: #1e293b;
+      --color-muted-foreground: #94a3b8;
+
+      --color-border: #1e293b;
+      --color-input: #1e293b;
+
+      --color-cool: #22d3ee;
+      --color-cool-foreground: #022c22;
+
+      --color-choco: #92400e;
+      --color-choco-foreground: #fff7ed;
+    }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Base Styles */
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+  }
 }
