@@ -11,10 +11,10 @@
   --color-foreground: #0f172a;
 
   /* Brand */
-  --color-primary: #2563eb;
+  --color-primary: #6366f1;
   --color-primary-foreground: #ffffff;
 
-  --color-accent: #38bdf8;
+  --color-accent: #818cf8;
   --color-accent-foreground: #0f172a;
 
   /* Semantic */
@@ -49,11 +49,11 @@
       --color-background: #0b1220;
       --color-foreground: #e5e7eb;
 
-      --color-primary: #3b82f6;
-      --color-primary-foreground: #020617;
+      --color-primary: #818cf8;
+      --color-primary-foreground: #0f172a;
 
-      --color-accent: #38bdf8;
-      --color-accent-foreground: #020617;
+      --color-accent: #a5b4fc;
+      --color-accent-foreground: #0f172a;
 
       --color-success: #22c55e;
       --color-success-foreground: #052e16;
