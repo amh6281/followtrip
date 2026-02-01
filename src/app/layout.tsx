@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { Header } from '@/components/layout';
 
 export const metadata: Metadata = {
   title: '팔로우트립 | 여행을 그대로 따라가다',
@@ -25,6 +26,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
             "'Spoqa Han Sans Neo', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif",
         }}
       >
+        <Header />
         {children}
       </body>
     </html>
