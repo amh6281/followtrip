@@ -1,0 +1,108 @@
+import type { Trip } from '@/types/trip';
+
+export const dummyTrips: Trip[] = [
+  {
+    id: '1',
+    title: '부산 해운대 당일치기',
+    location: '부산',
+    duration: '당일',
+    travelType: '혼자',
+    totalCost: 85000,
+    totalTime: 480,
+    likes: 42,
+    thumbnail:
+      'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop',
+    createdAt: '2026-01-28',
+  },
+  {
+    id: '2',
+    title: '제주도 2박3일 여행',
+    location: '제주',
+    duration: '2박3일',
+    travelType: '커플',
+    totalCost: 320000,
+    totalTime: 2880,
+    likes: 128,
+    thumbnail:
+      'https://images.unsplash.com/photo-1602211878317-54e822d0a710?w=800&h=600&fit=crop',
+    createdAt: '2026-01-25',
+  },
+  {
+    id: '3',
+    title: '서울 강남 데이트 코스',
+    location: '서울',
+    duration: '당일',
+    travelType: '커플',
+    totalCost: 120000,
+    totalTime: 600,
+    likes: 89,
+    thumbnail:
+      'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop',
+    createdAt: '2026-01-30',
+  },
+  {
+    id: '4',
+    title: '경주 역사 탐방 1박2일',
+    location: '경주',
+    duration: '1박2일',
+    travelType: '가족',
+    totalCost: 280000,
+    totalTime: 1440,
+    likes: 56,
+    thumbnail:
+      'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
+    createdAt: '2026-01-22',
+  },
+  {
+    id: '5',
+    title: '전주 한옥마을 당일치기',
+    location: '전주',
+    duration: '당일',
+    travelType: '친구',
+    totalCost: 95000,
+    totalTime: 540,
+    likes: 73,
+    thumbnail:
+      'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
+    createdAt: '2026-01-29',
+  },
+  {
+    id: '6',
+    title: '강릉 커피거리 1박2일',
+    location: '강릉',
+    duration: '1박2일',
+    travelType: '혼자',
+    totalCost: 180000,
+    totalTime: 1200,
+    likes: 95,
+    thumbnail:
+      'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
+    createdAt: '2026-01-27',
+  },
+  {
+    id: '7',
+    title: '여수 밤바다 2박3일',
+    location: '여수',
+    duration: '2박3일',
+    travelType: '커플',
+    totalCost: 350000,
+    totalTime: 3000,
+    likes: 112,
+    thumbnail:
+      'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop',
+    createdAt: '2026-01-24',
+  },
+  {
+    id: '8',
+    title: '인천 차이나타운 당일치기',
+    location: '인천',
+    duration: '당일',
+    travelType: '친구',
+    totalCost: 75000,
+    totalTime: 420,
+    likes: 38,
+    thumbnail:
+      'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop',
+    createdAt: '2026-01-31',
+  },
+];
