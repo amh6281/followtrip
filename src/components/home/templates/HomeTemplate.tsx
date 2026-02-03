@@ -1,33 +1,54 @@
-import { FilterBar, TripCard } from '../organisms';
+'use client';
+
+import { useMemo } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { FilterBar, TripList } from '../organisms';
+
 import { dummyTrips } from '@/data/dummy-trips';
+import type { Trip } from '@/types/trip';
+import { EmptyTrip, TripCount } from '../atoms';
 
 const HomeTemplate = () => {
+  const searchParams = useSearchParams();
+
+  const location = searchParams.get('location');
+  const duration = searchParams.get('duration');
+  const sort = (searchParams.get('sort') as 'latest' | 'popular') || 'latest';
+
+  const filteredAndSortedTrips = useMemo(() => {
+    const byLocation = (trip: Trip) => !location || trip.location === location;
+
+    const byDuration = (trip: Trip) => !duration || trip.duration === duration;
+
+    const sortByLatest = (a: Trip, b: Trip) =>
+      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+
+    const sortByPopular = (a: Trip, b: Trip) => b.likes - a.likes;
+
+    const sortMap = {
+      latest: sortByLatest,
+      popular: sortByPopular,
+    } as const;
+
+    return dummyTrips
+      .filter(byLocation)
+      .filter(byDuration)
+      .toSorted(sortMap[sort]);
+  }, [location, duration, sort]);
+
   return (
     <div className='bg-background min-h-screen'>
       {/* 메인 컨텐츠 */}
       <main className='container mx-auto px-4 py-8'>
         {/* 필터 바 */}
         <FilterBar />
-
         {/* 결과 카운트 */}
-        <div className='text-muted-foreground mb-6 text-sm'>총 3개의 루트</div>
-
-        {/* 루트 리스트 */}
-        {dummyTrips.length > 0 ? (
-          <div className='grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3'>
-            {dummyTrips.map((trip) => (
-              <TripCard key={trip.id} trip={trip} />
-            ))}
-          </div>
+        <TripCount count={filteredAndSortedTrips.length} />
+        {/* 여행지 리스트 */}
+        {filteredAndSortedTrips.length > 0 ? (
+          <TripList trips={filteredAndSortedTrips} />
         ) : (
-          <div className='flex flex-col items-center justify-center py-16 text-center'>
-            <p className='text-muted-foreground text-lg'>
-              조건에 맞는 루트가 없습니다.
-            </p>
-            <p className='text-muted-foreground mt-2 text-sm'>
-              다른 필터를 선택해보세요.
-            </p>
-          </div>
+          <EmptyTrip />
         )}
       </main>
     </div>
