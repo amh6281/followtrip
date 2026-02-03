@@ -1,2 +1,2 @@
-export { default as EmptyTripList } from './EmptyTripList';
+export { default as EmptyTrip } from './EmptyTrip';
 export { default as TripCount } from './TripCount';
