@@ -1,7 +1,8 @@
 'use client';
 
-import { useRouter, useSearchParams } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
 import { FilterGroup, SortGroup } from '../molecules';
+import { useUpdateQuery } from '@/hooks/useUpdateQuery';
 
 const LOCATIONS = [
   '전체',
@@ -17,22 +18,12 @@ const LOCATIONS = [
 const DURATIONS = ['전체', '당일', '1박2일', '2박3일'];
 
 const FilterBar = () => {
-  const router = useRouter();
   const searchParams = useSearchParams();
+  const { updateQuery } = useUpdateQuery();
 
   const location = searchParams.get('location');
   const duration = searchParams.get('duration');
   const sort = (searchParams.get('sort') as 'latest' | 'popular') || 'popular';
-
-  const updateQuery = (key: string, value: string | null) => {
-    const params = new URLSearchParams(searchParams.toString());
-    if (value === null || value === '전체') {
-      params.delete(key);
-    } else {
-      params.set(key, value);
-    }
-    router.push(`?${params.toString()}`, { scroll: false });
-  };
 
   return (
     <div className='sticky top-0 z-20 mb-6'>

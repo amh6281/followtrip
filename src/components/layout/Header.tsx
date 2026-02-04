@@ -10,7 +10,7 @@ const Header = () => {
             팔로우트립
           </h1>
           <span className='border-border text-muted-foreground hidden border-l pl-3 text-sm md:inline'>
-            여행을 그대로 따라가다
+            여행을 그대로 따라가다.
           </span>
         </Link>
 
