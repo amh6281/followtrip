@@ -1,6 +1,5 @@
 'use client';
 
-import { useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { FilterBar, TripList } from '../organisms';
 
@@ -15,26 +14,23 @@ const HomeTemplate = () => {
   const duration = searchParams.get('duration');
   const sort = (searchParams.get('sort') as 'latest' | 'popular') || 'latest';
 
-  const filteredAndSortedTrips = useMemo(() => {
-    const byLocation = (trip: Trip) => !location || trip.location === location;
+  // 필터링 및 정렬 로직
+  const byLocation = (trip: Trip) => !location || trip.location === location;
+  const byDuration = (trip: Trip) => !duration || trip.duration === duration;
 
-    const byDuration = (trip: Trip) => !duration || trip.duration === duration;
+  const sortByLatest = (a: Trip, b: Trip) =>
+    new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  const sortByPopular = (a: Trip, b: Trip) => b.likes - a.likes;
 
-    const sortByLatest = (a: Trip, b: Trip) =>
-      new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
+  const sortMap = {
+    latest: sortByLatest,
+    popular: sortByPopular,
+  } as const;
 
-    const sortByPopular = (a: Trip, b: Trip) => b.likes - a.likes;
-
-    const sortMap = {
-      latest: sortByLatest,
-      popular: sortByPopular,
-    } as const;
-
-    return dummyTrips
-      .filter(byLocation)
-      .filter(byDuration)
-      .toSorted(sortMap[sort]);
-  }, [location, duration, sort]);
+  const filteredAndSortedTrips = dummyTrips
+    .filter(byLocation)
+    .filter(byDuration)
+    .toSorted(sortMap[sort]);
 
   return (
     <div className='bg-background min-h-screen'>
