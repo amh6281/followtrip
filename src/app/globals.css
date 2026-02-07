@@ -1,80 +1,86 @@
 @import 'tailwindcss';
 
 /* =========================
-   FollowTrip – Tailwind v4 @theme
-   컬러는 --color-* 네임스페이스 → bg-background, text-primary 등 유틸 생성
+   FollowTrip – 선셋/코랄 계열
+   떠나고 싶게 만드는 감성 여행
 ========================= */
 
 @theme {
-  /* Base */
-  --color-background: #ffffff;
-  --color-foreground: #0f172a;
+  /* Base – 따뜻한 크림 베이스 */
+  --color-background: #fffef9;
+  --color-foreground: #2d1b0e;
 
-  /* Brand */
-  --color-primary: #6366f1;
+  /* Brand – 코랄 핑크 + 선셋 오렌지 */
+  --color-primary: #ff6b6b;
   --color-primary-foreground: #ffffff;
 
-  --color-accent: #818cf8;
-  --color-accent-foreground: #0f172a;
+  --color-accent: #ffa94d;
+  --color-accent-foreground: #ffffff;
 
   /* Semantic */
-  --color-success: #16a34a;
+  --color-success: #51cf66;
   --color-success-foreground: #ffffff;
 
-  --color-warning: #f59e0b;
-  --color-warning-foreground: #0f172a;
+  --color-warning: #ffd43b;
+  --color-warning-foreground: #2d1b0e;
 
-  --color-error: #dc2626;
+  --color-error: #ff6b6b;
   --color-error-foreground: #ffffff;
 
-  /* Neutral */
-  --color-muted: #e5e7eb;
-  --color-muted-foreground: #64748b;
+  /* Neutral – 따뜻한 베이지 그레이 */
+  --color-muted: #f4ede4;
+  --color-muted-foreground: #8b7355;
 
-  --color-border: #e2e8f0;
-  --color-input: #e2e8f0;
+  --color-border: #f4ede4;
+  --color-input: #f4ede4;
 
-  /* Mood */
-  --color-cool: #22d3ee;
-  --color-cool-foreground: #0f172a;
+  /* Mood – 여행 감성 포인트 */
+  --color-sunset: #ff8787;
+  --color-sunset-foreground: #ffffff;
 
-  --color-choco: #7c2d12;
-  --color-choco-foreground: #fff7ed;
+  --color-sky: #74c0fc;
+  --color-sky-foreground: #0c2d48;
+
+  --color-peach: #ffc9c9;
+  --color-peach-foreground: #2d1b0e;
 }
 
-/* Dark mode – @layer theme + @variant dark 로 같은 변수 덮어쓰기 */
+/* Dark mode */
 @layer theme {
   :root {
     @variant dark {
-      --color-background: #0b1220;
-      --color-foreground: #e5e7eb;
+      --color-background: #1a1311;
+      --color-foreground: #fef5ed;
 
-      --color-primary: #818cf8;
-      --color-primary-foreground: #0f172a;
+      --color-primary: #ff8787;
+      --color-primary-foreground: #1a1311;
 
-      --color-accent: #a5b4fc;
-      --color-accent-foreground: #0f172a;
+      --color-accent: #ffb366;
+      --color-accent-foreground: #1a1311;
 
-      --color-success: #22c55e;
-      --color-success-foreground: #052e16;
+      --color-success: #51cf66;
+      --color-success-foreground: #0a2e0a;
 
-      --color-warning: #fbbf24;
-      --color-warning-foreground: #451a03;
+      --color-warning: #ffd43b;
+      --color-warning-foreground: #2d1b0e;
 
-      --color-error: #ef4444;
-      --color-error-foreground: #450a0a;
+      --color-error: #ff6b6b;
+      --color-error-foreground: #1a1311;
 
-      --color-muted: #1e293b;
-      --color-muted-foreground: #94a3b8;
+      --color-muted: #2d2320;
+      --color-muted-foreground: #a8968a;
 
-      --color-border: #1e293b;
-      --color-input: #1e293b;
+      --color-border: #2d2320;
+      --color-input: #2d2320;
 
-      --color-cool: #22d3ee;
-      --color-cool-foreground: #022c22;
+      --color-sunset: #ff8787;
+      --color-sunset-foreground: #1a1311;
 
-      --color-choco: #92400e;
-      --color-choco-foreground: #fff7ed;
+      --color-sky: #74c0fc;
+      --color-sky-foreground: #0c2d48;
+
+      --color-peach: #ffc9c9;
+      --color-peach-foreground: #2d1b0e;
     }
   }
 }

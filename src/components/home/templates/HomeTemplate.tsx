@@ -33,19 +33,23 @@ const HomeTemplate = () => {
     .toSorted(sortMap[sort]);
 
   return (
-    <div className='bg-background min-h-screen'>
-      {/* 메인 컨텐츠 */}
-      <main className='container mx-auto px-4 py-8'>
-        {/* 필터 바 */}
-        <FilterBar />
-        {/* 결과 카운트 */}
-        <TripCount count={filteredAndSortedTrips.length} />
-        {/* 여행지 리스트 */}
-        {filteredAndSortedTrips.length > 0 ? (
-          <TripList trips={filteredAndSortedTrips} />
-        ) : (
-          <EmptyTrip />
-        )}
+    <div className='bg-background min-h-full flex-1'>
+      <main className='container mx-auto max-w-6xl px-4 py-8 md:py-10'>
+        <section className='mb-8'>
+          <h2 className='text-foreground mb-6 text-2xl font-semibold md:text-3xl'>
+            여행 루트
+          </h2>
+          <FilterBar />
+        </section>
+
+        <section>
+          <TripCount count={filteredAndSortedTrips.length} />
+          {filteredAndSortedTrips.length > 0 ? (
+            <TripList trips={filteredAndSortedTrips} />
+          ) : (
+            <EmptyTrip />
+          )}
+        </section>
       </main>
     </div>
   );

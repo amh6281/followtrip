@@ -26,9 +26,9 @@ const FilterBar = () => {
   const sort = (searchParams.get('sort') as 'latest' | 'popular') || 'popular';
 
   return (
-    <div className='sticky top-0 z-20 mb-6'>
-      <div className='border-border bg-background/80 supports-backdrop-filter:bg-background/60 rounded-xl border p-4 backdrop-blur'>
-        <div className='flex flex-col gap-4 md:flex-row md:items-center md:justify-between'>
+    <div className='sticky top-18 z-20 mb-6'>
+      <div className='border-border bg-background/90 supports-backdrop-filter:bg-background/80 rounded-2xl border backdrop-blur'>
+        <div className='flex flex-col gap-4 p-4 md:flex-row md:items-center md:justify-between md:p-5'>
           {/* 필터 영역 */}
           <div className='flex flex-col gap-3 md:flex-row md:items-center md:gap-6'>
             <FilterGroup
@@ -37,7 +37,6 @@ const FilterBar = () => {
               value={location}
               onChange={(value) => updateQuery('location', value)}
             />
-
             <FilterGroup
               label='일정'
               options={DURATIONS}

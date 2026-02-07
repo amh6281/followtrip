@@ -24,14 +24,14 @@ const TripCard = ({ trip }: TripCardProps) => {
 
   return (
     <Link href={`/trips/${trip.id}`}>
-      <article className='group border-border bg-background relative overflow-hidden rounded-lg border transition-all duration-200 hover:-translate-y-1 hover:shadow-lg'>
+      <article className='border-border bg-background relative overflow-hidden rounded-2xl border'>
         {/* 썸네일 */}
         <div className='bg-muted relative aspect-video w-full overflow-hidden'>
           <Image
             src={trip.thumbnail}
             alt={trip.title}
             fill
-            className='object-cover transition-transform duration-300 group-hover:scale-105'
+            className='object-cover'
             sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
           />
         </div>
@@ -45,13 +45,13 @@ const TripCard = ({ trip }: TripCardProps) => {
 
           {/* 메타 정보 */}
           <div className='text-muted-foreground mb-3 flex flex-wrap gap-2 text-sm'>
-            <span className='bg-muted rounded-full px-2 py-1'>
+            <span className='bg-muted rounded-full px-2.5 py-1'>
               {trip.location}
             </span>
-            <span className='bg-muted rounded-full px-2 py-1'>
+            <span className='bg-muted rounded-full px-2.5 py-1'>
               {trip.duration}
             </span>
-            <span className='bg-muted rounded-full px-2 py-1'>
+            <span className='bg-muted rounded-full px-2.5 py-1'>
               {trip.travelType}
             </span>
           </div>
