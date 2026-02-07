@@ -8,7 +8,6 @@ export const dummyTrips: Trip[] = [
     duration: '당일',
     travelType: '혼자',
     totalCost: 85000,
-    totalTime: 480,
     likes: 42,
     thumbnail:
       'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&h=600&fit=crop',
@@ -21,7 +20,6 @@ export const dummyTrips: Trip[] = [
     duration: '2박3일',
     travelType: '커플',
     totalCost: 320000,
-    totalTime: 2880,
     likes: 128,
     thumbnail:
       'https://images.unsplash.com/photo-1602211878317-54e822d0a710?w=800&h=600&fit=crop',
@@ -34,7 +32,6 @@ export const dummyTrips: Trip[] = [
     duration: '당일',
     travelType: '커플',
     totalCost: 120000,
-    totalTime: 600,
     likes: 89,
     thumbnail:
       'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop',
@@ -47,7 +44,6 @@ export const dummyTrips: Trip[] = [
     duration: '1박2일',
     travelType: '가족',
     totalCost: 280000,
-    totalTime: 1440,
     likes: 56,
     thumbnail:
       'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
@@ -60,7 +56,6 @@ export const dummyTrips: Trip[] = [
     duration: '당일',
     travelType: '친구',
     totalCost: 95000,
-    totalTime: 540,
     likes: 73,
     thumbnail:
       'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=800&h=600&fit=crop',
@@ -73,7 +68,6 @@ export const dummyTrips: Trip[] = [
     duration: '1박2일',
     travelType: '혼자',
     totalCost: 180000,
-    totalTime: 1200,
     likes: 95,
     thumbnail:
       'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop',
@@ -86,7 +80,6 @@ export const dummyTrips: Trip[] = [
     duration: '2박3일',
     travelType: '커플',
     totalCost: 350000,
-    totalTime: 3000,
     likes: 112,
     thumbnail:
       'https://images.unsplash.com/photo-1505142468610-359e7d316be0?w=800&h=600&fit=crop',
@@ -99,7 +92,6 @@ export const dummyTrips: Trip[] = [
     duration: '당일',
     travelType: '친구',
     totalCost: 75000,
-    totalTime: 420,
     likes: 38,
     thumbnail:
       'https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=800&h=600&fit=crop',

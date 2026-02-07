@@ -14,14 +14,6 @@ const TripCard = ({ trip }: TripCardProps) => {
     return `${cost.toLocaleString()}원`;
   };
 
-  const formatTime = (minutes: number) => {
-    const hours = Math.floor(minutes / 60);
-    const mins = minutes % 60;
-    if (hours === 0) return `${mins}분`;
-    if (mins === 0) return `${hours}시간`;
-    return `${hours}시간 ${mins}분`;
-  };
-
   return (
     <Link href={`/trips/${trip.id}`}>
       <article className='border-border bg-background relative overflow-hidden rounded-2xl border'>
@@ -68,7 +60,7 @@ const TripCard = ({ trip }: TripCardProps) => {
               <div className='flex items-center gap-1'>
                 <span className='text-muted-foreground'>소요</span>
                 <span className='text-foreground font-medium'>
-                  {formatTime(trip.totalTime)}
+                  {trip.duration}
                 </span>
               </div>
             </div>

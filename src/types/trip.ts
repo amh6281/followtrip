@@ -5,7 +5,6 @@ export interface Trip {
   duration: string; // "당일" | "1박2일" | "2박3일" 등
   travelType: string; // "혼자" | "커플" | "가족" | "친구"
   totalCost: number; // 총 경비 (원)
-  totalTime: number; // 총 소요 시간 (분)
   likes: number;
   thumbnail: string; // 대표 사진 URL
   createdAt: string; // 작성일
