@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { formatCost } from '@/utils/format';
 import type { Trip } from '@/types/trip';
+import { HeartIcon } from '@phosphor-icons/react/dist/ssr';
 
 interface TripCardProps {
   trip: Trip;
@@ -61,18 +62,7 @@ const TripCard = ({ trip }: TripCardProps) => {
 
             {/* 좋아요 */}
             <div className='flex items-center gap-1 text-sm'>
-              <svg
-                className='text-error h-4 w-4'
-                fill='currentColor'
-                viewBox='0 0 20 20'
-                xmlns='http://www.w3.org/2000/svg'
-              >
-                <path
-                  fillRule='evenodd'
-                  d='M3.172 5.172a4 4 0 015.656 0L10 6.343l1.172-1.171a4 4 0 115.656 5.656L10 17.657l-6.828-6.829a4 4 0 010-5.656z'
-                  clipRule='evenodd'
-                />
-              </svg>
+              <HeartIcon size={18} className='text-error' weight='fill' />
               <span className='text-foreground font-medium'>{trip.likes}</span>
             </div>
           </div>
