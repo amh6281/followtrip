@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { formatCost } from '@/utils/format';
 import type { Trip } from '@/types/trip';
 
 interface TripCardProps {
@@ -7,13 +8,6 @@ interface TripCardProps {
 }
 
 const TripCard = ({ trip }: TripCardProps) => {
-  const formatCost = (cost: number) => {
-    if (cost >= 10000) {
-      return `${(cost / 10000).toFixed(1)}만원`;
-    }
-    return `${cost.toLocaleString()}원`;
-  };
-
   return (
     <Link href={`/trips/${trip.id}`}>
       <article className='border-border bg-background relative overflow-hidden rounded-2xl border'>
