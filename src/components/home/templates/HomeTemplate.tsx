@@ -36,8 +36,8 @@ const HomeTemplate = () => {
     <div className='bg-background min-h-full flex-1'>
       <main className='container mx-auto max-w-6xl px-4 py-8 md:py-10'>
         <section className='mb-8'>
-          <h2 className='text-foreground mb-6 text-2xl font-semibold md:text-3xl'>
-            여행 루트
+          <h2 className='text-foreground mb-6 text-2xl font-semibold md:text-[26px]'>
+            여행 코스
           </h2>
           <FilterBar />
         </section>
