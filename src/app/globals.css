@@ -6,8 +6,10 @@
 ========================= */
 
 @theme {
-  /* Base – 따뜻한 크림 베이스 */
+  /* Base – 밝은 크림 */
   --color-background: #fffef9;
+  /* 크림 */
+  /* --color-background: #fffbf5; */
   --color-foreground: #2d1b0e;
 
   /* Brand – 코랄 핑크 + 선셋 오렌지 */
