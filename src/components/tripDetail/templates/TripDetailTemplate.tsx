@@ -1,4 +1,3 @@
-import { ListChecksIcon } from '@phosphor-icons/react/dist/ssr';
 import { BackLink } from '@/components/common';
 import type { TripDetail } from '@/types/trip';
 import SummaryCard from '../organisms/SummaryCard';
@@ -21,20 +20,10 @@ const TripDetailTemplate = ({ detail }: TripDetailTemplateProps) => {
         </section>
 
         {/* 일정 */}
-        <section className='mb-16 max-md:mb-14'>
-          <h2 className='text-foreground mb-6 flex items-center gap-3 text-2xl font-semibold tracking-tight max-md:text-xl'>
-            <span className='bg-primary/10 text-primary flex size-10 items-center justify-center rounded-xl'>
-              <ListChecksIcon size={20} weight='duotone' />
-            </span>
-            일정
-          </h2>
-          <Timeline steps={detail.steps} />
-        </section>
+        <Timeline steps={detail.steps} />
 
         {/* 후기 */}
-        <section>
-          <ReviewSection review={detail.review} />
-        </section>
+        <ReviewSection review={detail.review} />
       </main>
     </div>
   );

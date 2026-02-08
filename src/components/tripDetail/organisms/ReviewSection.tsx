@@ -13,8 +13,13 @@ interface ReviewSectionProps {
 const ReviewSection = ({ review }: ReviewSectionProps) => {
   if (!review) {
     return (
-      <div className='border-border bg-muted/30 flex items-center justify-center rounded-2xl border border-dashed px-6 py-10'>
-        <p className='text-muted-foreground text-sm'>작성된 후기가 없어요.</p>
+      <div className='border-border bg-muted/30 flex flex-col items-center justify-center rounded-2xl border border-dashed px-6 py-12'>
+        <span className='bg-muted text-muted-foreground mb-3 flex size-12 items-center justify-center rounded-full'>
+          <NotePencilIcon className='size-6' weight='duotone' />
+        </span>
+        <p className='text-muted-foreground text-center text-sm'>
+          작성된 후기가 없어요.
+        </p>
       </div>
     );
   }
