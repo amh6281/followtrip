@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PencilSimpleLineIcon } from '@phosphor-icons/react/dist/ssr';
 
 const Header = () => {
   return (
@@ -14,6 +15,18 @@ const Header = () => {
           <span className='border-border text-muted-foreground inline border-l pl-3 text-sm max-md:hidden'>
             여행을 그대로 따라가다
           </span>
+        </Link>
+        <Link
+          href='/trips/new'
+          className='text-primary border-primary/40 flex shrink-0 items-center gap-2 rounded-xl border px-3.5 py-2 text-sm font-medium transition-colors max-md:px-3 max-md:py-2 max-md:text-xs'
+          aria-label='나의 여정 기록하기'
+        >
+          <PencilSimpleLineIcon
+            size={18}
+            weight='duotone'
+            className='max-md:size-4'
+          />
+          <span className='max-md:hidden'>여정 기록하기</span>
         </Link>
       </div>
     </header>
