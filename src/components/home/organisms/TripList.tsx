@@ -7,7 +7,7 @@ interface TripListProps {
 
 const TripList = ({ trips }: TripListProps) => {
   return (
-    <div className='grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3'>
+    <div className='grid grid-cols-3 gap-8 max-lg:grid-cols-2 max-md:grid-cols-1'>
       {trips.map((trip) => (
         <TripCard key={trip.id} trip={trip} />
       ))}

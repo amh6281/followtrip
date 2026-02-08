@@ -16,7 +16,7 @@ interface SummaryCardProps {
 const SummaryCard = ({ trip }: SummaryCardProps) => {
   return (
     <article className='border-border bg-background overflow-hidden rounded-2xl border'>
-      <div className='bg-muted relative aspect-video w-full md:aspect-21/9'>
+      <div className='bg-muted relative aspect-21/9 w-full max-md:aspect-video'>
         <Image
           src={trip.thumbnail}
           alt={trip.title}
@@ -30,8 +30,8 @@ const SummaryCard = ({ trip }: SummaryCardProps) => {
           aria-hidden
         />
       </div>
-      <div className='p-5 md:p-7'>
-        <h2 className='text-foreground mb-4 text-2xl leading-tight font-bold tracking-tight md:text-3xl'>
+      <div className='p-7 max-md:p-5'>
+        <h2 className='text-foreground mb-4 text-3xl leading-tight font-bold tracking-tight max-md:text-2xl'>
           {trip.title}
         </h2>
         <div className='mb-5 flex flex-wrap gap-2'>

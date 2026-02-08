@@ -28,7 +28,7 @@ const FilterBar = () => {
   return (
     <div className='sticky top-18 z-20 mb-6'>
       <div className='border-border bg-background/90 supports-backdrop-filter:bg-background/80 rounded-2xl border backdrop-blur'>
-        <div className='flex flex-col gap-4 p-4 md:flex-row md:items-center md:justify-between md:p-5'>
+        <div className='flex items-center justify-between p-5 max-md:flex-col max-md:items-start max-md:gap-4 max-md:p-4'>
           {/* 필터 영역 */}
           <div className='flex flex-col gap-3 md:flex-row md:items-center md:gap-6'>
             <FilterGroup

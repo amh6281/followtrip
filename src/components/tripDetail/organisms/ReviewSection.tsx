@@ -21,8 +21,8 @@ const ReviewSection = ({ review }: ReviewSectionProps) => {
 
   return (
     <section className='border-border bg-background rounded-2xl border'>
-      <div className='border-border border-b px-5 py-5 md:px-7 md:py-6'>
-        <h2 className='text-foreground flex items-center gap-3 text-xl font-semibold tracking-tight md:text-2xl'>
+      <div className='border-border border-b px-7 py-6 max-md:px-5 max-md:py-5'>
+        <h2 className='text-foreground flex items-center gap-3 text-2xl font-semibold tracking-tight max-md:text-xl'>
           <span className='bg-primary/10 text-primary flex size-10 items-center justify-center rounded-xl'>
             <NotePencilIcon size={20} weight='fill' />
           </span>
@@ -30,8 +30,8 @@ const ReviewSection = ({ review }: ReviewSectionProps) => {
         </h2>
       </div>
 
-      <div className='p-5 md:p-7'>
-        <div className='text-foreground mb-8 max-w-none text-[15px] leading-relaxed whitespace-pre-wrap md:leading-8'>
+      <div className='p-7 max-md:p-5'>
+        <div className='text-foreground mb-8 max-w-none text-[15px] leading-6 whitespace-pre-wrap max-md:leading-relaxed'>
           {review.fullText}
         </div>
 

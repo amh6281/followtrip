@@ -46,7 +46,7 @@ const TimelineStepItem = ({ step, isLast }: TimelineStepItemProps) => {
       </div>
 
       {/* 콘텐츠 */}
-      <div className='border-border bg-background min-w-0 flex-1 rounded-2xl border p-4 md:p-5'>
+      <div className='border-border bg-background min-w-0 flex-1 rounded-2xl border p-5 max-md:p-4'>
         <h3 className='text-foreground mb-3 text-lg leading-snug font-semibold'>
           {step.placeName}
         </h3>
