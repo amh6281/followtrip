@@ -31,7 +31,7 @@ const SummaryCard = ({ trip }: SummaryCardProps) => {
         />
       </div>
       <div className='p-7 max-md:p-5'>
-        <h2 className='text-foreground mb-4 text-3xl leading-tight font-bold tracking-tight max-md:text-2xl'>
+        <h2 className='text-foreground mb-4 text-[26px] leading-tight font-semibold tracking-tight max-md:text-2xl'>
           {trip.title}
         </h2>
         <div className='mb-5 flex flex-wrap gap-2'>

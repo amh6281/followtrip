@@ -6,6 +6,7 @@ import { CreateTrip } from '../molecules';
 import { dummyTrips } from '@/data/dummy-trips';
 import type { Trip } from '@/types/trip';
 import { EmptyTrip, TripCount } from '../atoms';
+import { Title } from '@/components/common';
 
 const HomeTemplate = () => {
   const searchParams = useSearchParams();
@@ -38,9 +39,7 @@ const HomeTemplate = () => {
         <CreateTrip />
 
         <section className='mb-8'>
-          <h2 className='text-foreground mb-6 text-[26px] font-semibold max-md:text-2xl'>
-            여행 코스
-          </h2>
+          <Title text='여행 코스' />
           <FilterBar />
         </section>
 
