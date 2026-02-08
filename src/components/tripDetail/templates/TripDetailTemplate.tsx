@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ListChecksIcon } from '@phosphor-icons/react/dist/ssr';
+import { ArrowLeftIcon, ListChecksIcon } from '@phosphor-icons/react/dist/ssr';
 import type { TripDetail } from '@/types/trip';
 import SummaryCard from '../organisms/SummaryCard';
 import Timeline from '../organisms/Timeline';
@@ -12,23 +12,26 @@ interface TripDetailTemplateProps {
 const TripDetailTemplate = ({ detail }: TripDetailTemplateProps) => {
   return (
     <div className='bg-background min-h-full flex-1'>
-      <main className='container mx-auto max-w-3xl px-4 py-6 md:py-8'>
+      <main className='container mx-auto max-w-3xl px-4 py-6 md:py-10'>
         <Link
           href='/'
-          className='text-muted-foreground hover:text-foreground mb-6 inline-flex items-center gap-1 text-sm transition-colors'
+          className='text-muted-foreground hover:text-foreground mb-6 inline-flex items-center gap-2 py-2 pr-2 text-sm font-medium transition-colors'
         >
-          ← 목록으로
+          <ArrowLeftIcon size={20} weight='bold' />
+          목록으로
         </Link>
 
         {/* 요약 카드 */}
-        <section className='mb-10'>
+        <section className='mb-14 md:mb-16'>
           <SummaryCard trip={detail} />
         </section>
 
         {/* 일정 */}
-        <section className='mb-10'>
-          <h2 className='text-foreground mb-6 flex items-center gap-2 text-xl font-semibold'>
-            <ListChecksIcon className='text-primary size-6' weight='duotone' />
+        <section className='mb-14 md:mb-16'>
+          <h2 className='text-foreground mb-6 flex items-center gap-3 text-xl font-semibold tracking-tight md:text-2xl'>
+            <span className='bg-primary/10 text-primary flex size-10 items-center justify-center rounded-xl'>
+              <ListChecksIcon size={20} weight='duotone' />
+            </span>
             일정
           </h2>
           <Timeline steps={detail.steps} />
