@@ -1,5 +1,6 @@
 import { BackLink, Title } from '@/components/common';
 import { StepIndicator } from '../molecules';
+import { BasicInfoStep } from '../organisms';
 
 const CreateTripTemplate = () => {
   return (
@@ -16,6 +17,9 @@ const CreateTripTemplate = () => {
         >
           <StepIndicator />
         </nav>
+
+        {/* 단계별 폼 */}
+        <BasicInfoStep />
       </main>
     </div>
   );
