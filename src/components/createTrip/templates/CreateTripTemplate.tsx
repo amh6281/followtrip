@@ -1,8 +1,13 @@
+'use client';
+
 import { BackLink, Title } from '@/components/common';
 import { StepIndicator } from '../molecules';
-import { BasicInfoStep } from '../organisms';
+import { BasicInfoStep, TimelineStep } from '../organisms';
+import { useState } from 'react';
 
 const CreateTripTemplate = () => {
+  const [currentStep, setCurrentStep] = useState(2);
+
   return (
     <div className='bg-background min-h-full flex-1'>
       <main className='container mx-auto max-w-2xl px-4 py-10 max-md:py-6'>
@@ -19,7 +24,10 @@ const CreateTripTemplate = () => {
         </nav>
 
         {/* 단계별 폼 */}
-        <BasicInfoStep />
+        <section className='min-h-[320px]'>
+          {currentStep === 1 && <BasicInfoStep />}
+          {currentStep === 2 && <TimelineStep />}
+        </section>
       </main>
     </div>
   );
