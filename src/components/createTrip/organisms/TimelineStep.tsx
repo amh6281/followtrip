@@ -6,7 +6,13 @@ import {
   CaretUpIcon,
   CaretDownIcon,
 } from '@phosphor-icons/react/dist/ssr';
+import { Select } from '@/components/common';
 import { TRANSPORT_OPTIONS } from '@/constants/trip';
+
+const TRANSPORT_SELECT_OPTIONS = TRANSPORT_OPTIONS.map((t) => ({
+  value: t,
+  label: t,
+}));
 
 const TimelineStep = () => {
   return (
@@ -82,16 +88,12 @@ const TimelineStep = () => {
                 <label className='text-foreground mb-1.5 block text-xs font-medium'>
                   이동 수단
                 </label>
-                <select
-                  defaultValue='도보'
-                  className='border-border bg-background text-foreground focus:border-primary w-full rounded-lg border px-3 py-2 text-sm transition-colors outline-none'
-                >
-                  {TRANSPORT_OPTIONS.map((t) => (
-                    <option key={t} value={t}>
-                      {t}
-                    </option>
-                  ))}
-                </select>
+                <Select
+                  instanceId={`transport-select-${index}`}
+                  options={TRANSPORT_SELECT_OPTIONS}
+                  defaultValue={TRANSPORT_SELECT_OPTIONS[0]}
+                  size='small'
+                />
               </div>
               <div>
                 <label className='text-foreground mb-1.5 block text-xs font-medium'>

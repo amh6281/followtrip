@@ -103,8 +103,6 @@ export const TRANSPORT_OPTIONS = [
   '렌터카',
 ] as const;
 
-export type TransportType = (typeof TRANSPORT_OPTIONS)[number];
-
 /** 스텝 배열에서 총 경비 계산 */
 export function computeTotalCostFromSteps(
   steps: Array<{ cost?: number }>,

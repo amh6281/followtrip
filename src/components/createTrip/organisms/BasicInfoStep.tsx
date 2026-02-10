@@ -1,101 +1,22 @@
 'use client';
 
-import Select, { type StylesConfig } from 'react-select';
+import { Select } from '@/components/common';
 import { TRIP_LOCATIONS, TRIP_DURATIONS, TRAVEL_TYPES } from '@/constants/trip';
 
-type SelectOption = { value: string; label: string };
-
-const LOCATION_OPTIONS: SelectOption[] = TRIP_LOCATIONS.map((loc) => ({
+const LOCATION_OPTIONS = TRIP_LOCATIONS.map((loc) => ({
   value: loc,
   label: loc,
 }));
 
-const DURATION_OPTIONS: SelectOption[] = TRIP_DURATIONS.map((d) => ({
+const DURATION_OPTIONS = TRIP_DURATIONS.map((d) => ({
   value: d,
   label: d,
 }));
 
-const TRAVEL_TYPE_OPTIONS: SelectOption[] = TRAVEL_TYPES.map((t) => ({
+const TRAVEL_TYPE_OPTIONS = TRAVEL_TYPES.map((t) => ({
   value: t,
   label: t,
 }));
-
-const selectStyles: StylesConfig<SelectOption, false> = {
-  control: (base, state) => ({
-    ...base,
-    minHeight: 48,
-    borderRadius: 12,
-    borderWidth: 1,
-    borderColor: state.isFocused
-      ? 'var(--color-primary)'
-      : 'var(--color-border)',
-    boxShadow: 'none',
-    backgroundColor: 'var(--color-background)',
-    '&:hover': {
-      borderColor: state.isFocused
-        ? 'var(--color-primary)'
-        : 'var(--color-border)',
-    },
-  }),
-  valueContainer: (base) => ({
-    ...base,
-    paddingLeft: 16,
-    paddingRight: 16,
-    paddingTop: 4,
-    paddingBottom: 4,
-  }),
-  input: (base) => ({
-    ...base,
-    margin: 0,
-    padding: 0,
-    color: 'var(--color-foreground)',
-  }),
-  singleValue: (base) => ({
-    ...base,
-    color: 'var(--color-foreground)',
-    fontSize: '1rem',
-  }),
-  placeholder: (base) => ({
-    ...base,
-    color: 'var(--color-muted-foreground)',
-    fontSize: '1rem',
-  }),
-  menu: (base) => ({
-    ...base,
-    borderRadius: 12,
-    overflow: 'hidden',
-    boxShadow: 'none',
-    border: '1px solid var(--color-border)',
-  }),
-  menuList: (base) => ({
-    ...base,
-    padding: 4,
-  }),
-  option: (base, state) => ({
-    ...base,
-    fontSize: '0.9375rem',
-    padding: '12px 16px',
-    borderRadius: 8,
-    backgroundColor: state.isSelected
-      ? 'var(--color-primary)'
-      : state.isFocused
-        ? 'var(--color-muted)'
-        : 'transparent',
-    color: state.isSelected
-      ? 'var(--color-primary-foreground)'
-      : 'var(--color-foreground)',
-    cursor: 'pointer',
-  }),
-  indicatorSeparator: () => ({ display: 'none' }),
-  dropdownIndicator: (base, state) => ({
-    ...base,
-    color: 'var(--color-muted-foreground)',
-    paddingRight: 12,
-    '&:hover': { color: 'var(--color-foreground)' },
-    transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : undefined,
-    transition: 'transform 0.2s',
-  }),
-};
 
 const BasicInfoStep = () => {
   return (
@@ -132,7 +53,7 @@ const BasicInfoStep = () => {
           //   onChange={(opt) => onChange({ location: opt?.value ?? '' })}
           placeholder='선택하세요'
           isClearable
-          styles={selectStyles}
+          size='medium'
         />
       </div>
 
@@ -150,7 +71,7 @@ const BasicInfoStep = () => {
           //   value={durationValue}
           //   onChange={(opt) => onChange({ duration: opt?.value ?? '당일' })}
           placeholder='선택하세요'
-          styles={selectStyles}
+          size='medium'
         />
       </div>
 
@@ -168,7 +89,7 @@ const BasicInfoStep = () => {
           //   value={travelTypeValue}
           //   onChange={(opt) => onChange({ travelType: opt?.value ?? '혼자' })}
           placeholder='선택하세요'
-          styles={selectStyles}
+          size='medium'
         />
       </div>
     </div>
