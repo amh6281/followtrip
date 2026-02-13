@@ -2,11 +2,16 @@
 
 import { BackLink, Title } from '@/components/common';
 import { StepIndicator } from '../molecules';
-import { BasicInfoStep, CoverImageStep, TimelineStep } from '../organisms';
+import {
+  BasicInfoStep,
+  CoverImageStep,
+  TimelineStep,
+  ReviewStep,
+} from '../organisms';
 import { useState } from 'react';
 
 const CreateTripTemplate = () => {
-  const [currentStep, setCurrentStep] = useState(3);
+  const [currentStep, setCurrentStep] = useState(4);
 
   return (
     <div className='bg-background min-h-full flex-1'>
@@ -28,6 +33,7 @@ const CreateTripTemplate = () => {
           {currentStep === 1 && <BasicInfoStep />}
           {currentStep === 2 && <TimelineStep />}
           {currentStep === 3 && <CoverImageStep />}
+          {currentStep === 4 && <ReviewStep />}
         </section>
       </main>
     </div>
