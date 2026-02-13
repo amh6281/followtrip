@@ -26,7 +26,10 @@ const CreateTripTemplate = () => {
           className='border-border bg-background/80 mb-10 rounded-2xl border px-5 py-4 max-md:px-4 max-md:py-3'
           aria-label='작성 단계'
         >
-          <StepIndicator />
+          <StepIndicator
+            currentStep={currentStep}
+            onStepChange={setCurrentStep}
+          />
         </nav>
 
         {/* 단계별 폼 */}
