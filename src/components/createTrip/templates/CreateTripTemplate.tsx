@@ -1,7 +1,7 @@
 'use client';
 
 import { BackLink, Title } from '@/components/common';
-import { StepIndicator } from '../molecules';
+import { StepIndicator, StepNav } from '../molecules';
 import {
   BasicInfoStep,
   CoverImageStep,
@@ -12,7 +12,7 @@ import {
 import { useState } from 'react';
 
 const CreateTripTemplate = () => {
-  const [currentStep, setCurrentStep] = useState(5);
+  const [currentStep, setCurrentStep] = useState(1);
 
   return (
     <div className='bg-background min-h-full flex-1'>
@@ -37,6 +37,13 @@ const CreateTripTemplate = () => {
           {currentStep === 4 && <ReviewStep />}
           {currentStep === 5 && <PreviewStep />}
         </section>
+
+        <StepNav
+          onPrev={() => setCurrentStep((prev) => Math.max(1, prev - 1))}
+          onNext={() => setCurrentStep((prev) => prev + 1)}
+          isFirstStep={currentStep === 1}
+          isLastStep={currentStep === 5}
+        />
       </main>
     </div>
   );

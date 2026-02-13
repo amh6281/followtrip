@@ -29,15 +29,6 @@ const PreviewStep = () => {
       <Timeline steps={[]} />
 
       <ReviewSection />
-
-      <div className='border-border flex flex-col gap-4 border-t pt-8 sm:flex-row sm:justify-end'>
-        <button
-          type='button'
-          className='bg-primary text-primary-foreground w-full rounded-xl px-6 py-3 text-[15px] font-semibold transition-opacity hover:opacity-90 sm:w-auto'
-        >
-          게시하기
-        </button>
-      </div>
     </div>
   );
 };
