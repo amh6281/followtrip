@@ -7,11 +7,12 @@ import {
   CoverImageStep,
   TimelineStep,
   ReviewStep,
+  PreviewStep,
 } from '../organisms';
 import { useState } from 'react';
 
 const CreateTripTemplate = () => {
-  const [currentStep, setCurrentStep] = useState(4);
+  const [currentStep, setCurrentStep] = useState(5);
 
   return (
     <div className='bg-background min-h-full flex-1'>
@@ -34,6 +35,7 @@ const CreateTripTemplate = () => {
           {currentStep === 2 && <TimelineStep />}
           {currentStep === 3 && <CoverImageStep />}
           {currentStep === 4 && <ReviewStep />}
+          {currentStep === 5 && <PreviewStep />}
         </section>
       </main>
     </div>
