@@ -34,7 +34,7 @@ const BasicInfoStep = () => {
           //   value={data.title}
           //   onChange={(e) => onChange({ title: e.target.value })}
           placeholder='예: 부산 해운대 당일치기'
-          className='border-border bg-background text-foreground placeholder:text-muted-foreground focus:border-primary w-full rounded-xl border px-4 py-3 text-base transition-colors outline-none'
+          className='border-border bg-background text-foreground focus:border-primary w-full rounded-lg border px-3 py-2 text-sm transition-colors outline-none'
         />
       </div>
 
@@ -53,7 +53,7 @@ const BasicInfoStep = () => {
           //   onChange={(opt) => onChange({ location: opt?.value ?? '' })}
           placeholder='선택하세요'
           isClearable
-          size='medium'
+          size='small'
         />
       </div>
 
@@ -71,7 +71,7 @@ const BasicInfoStep = () => {
           //   value={durationValue}
           //   onChange={(opt) => onChange({ duration: opt?.value ?? '당일' })}
           placeholder='선택하세요'
-          size='medium'
+          size='small'
         />
       </div>
 
@@ -89,7 +89,7 @@ const BasicInfoStep = () => {
           //   value={travelTypeValue}
           //   onChange={(opt) => onChange({ travelType: opt?.value ?? '혼자' })}
           placeholder='선택하세요'
-          size='medium'
+          size='small'
         />
       </div>
     </div>

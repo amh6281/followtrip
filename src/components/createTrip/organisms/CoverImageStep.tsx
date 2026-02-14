@@ -37,7 +37,7 @@ const CoverImageStep = () => {
             id='thumbnail'
             type='url'
             placeholder='https://...'
-            className='border-border bg-background text-foreground placeholder:text-muted-foreground focus:border-primary w-full rounded-xl border px-4 py-3 text-base transition-colors outline-none'
+            className='border-border bg-background text-foreground focus:border-primary w-full rounded-lg border px-3 py-2 text-sm transition-colors outline-none'
           />
         </div>
       </div>

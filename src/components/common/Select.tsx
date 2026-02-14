@@ -14,8 +14,8 @@ const SIZE_CONFIG = {
     minHeight: 40,
     borderRadius: 8,
     paddingX: 12,
-    paddingY: 2,
-    fontSize: '0.875rem', // 14px
+    paddingY: 8,
+    fontSize: '0.875rem', // 14px - matches Input text-sm
     optionPadding: '8px 12px',
     optionBorderRadius: 6,
     indicatorPaddingRight: 8,
