@@ -13,3 +13,29 @@ export interface RegionCourse {
   days: RegionCourseDay[];
   faq: string[];
 }
+
+export interface RegionPlace {
+  slug: string;
+  name: string;
+  address: string;
+  hours: string;
+  fee: string;
+  stayDuration: string;
+  bestVisitTime: string;
+  tips: string[];
+  nearbyPlaceSlugs: string[];
+  includedCourseSlugs: string[];
+}
+
+export interface RegionHub {
+  id: string;
+  name: string;
+  subtitle: string;
+  updatedAt: string;
+  recommendedDuration: string;
+  averageBudget: string;
+  popularThemes: string[];
+  weatherTags: string[];
+  highlightCourseSlugs: string[];
+  placeSlugs: string[];
+}
