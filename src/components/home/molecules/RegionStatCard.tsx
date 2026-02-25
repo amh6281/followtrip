@@ -10,7 +10,7 @@ const RegionStatCard = ({
   subLabel = '업데이트 중',
 }: RegionStatCardProps) => {
   return (
-    <div className='border-border bg-background/85 hidden rounded-2xl border p-4 text-right shadow-sm backdrop-blur md:block'>
+    <div className='border-border bg-background/85 hidden w-full max-w-40 min-w-0 rounded-2xl border p-4 text-right backdrop-blur md:block'>
       <p className='text-muted-foreground text-xs'>{label}</p>
       <p className='text-foreground mt-1 text-2xl font-semibold'>{count}</p>
       <p className='text-muted-foreground mt-1 text-xs'>{subLabel}</p>
