@@ -1,17 +1,17 @@
 import { CourseCard } from '../molecules';
-import type { RegionCourse } from '@/types/region';
+import { getRegionCourses, regionHubList } from '@/utils/region';
 
-interface CuratedCoursesSectionProps {
-  courses: RegionCourse[];
-  regionId: string;
-  regionName: string;
-}
+const CuratedCoursesSection = () => {
+  const featuredRegion = regionHubList[0];
 
-const CuratedCoursesSection = ({
-  courses,
-  regionId,
-  regionName,
-}: CuratedCoursesSectionProps) => {
+  if (!featuredRegion) {
+    return null;
+  }
+
+  const featuredCourses = getRegionCourses(
+    featuredRegion.highlightCourseSlugs,
+  ).slice(0, 3);
+
   return (
     <section className='space-y-5 md:space-y-6'>
       <div className='flex items-baseline justify-between gap-4'>
@@ -19,15 +19,15 @@ const CuratedCoursesSection = ({
           추천 코스
         </h2>
         <span className='text-muted-foreground hidden text-sm md:inline'>
-          {regionName}에서 추천하는 코스
+          {featuredRegion.name}에서 추천하는 코스
         </span>
       </div>
       <div className='grid gap-4 sm:grid-cols-2 lg:grid-cols-3'>
-        {courses.map((course) => (
+        {featuredCourses.map((course) => (
           <CourseCard
             key={course.slug}
             course={course}
-            href={`/${regionId}/${course.slug}`}
+            href={`/${featuredRegion.id}/${course.slug}`}
           />
         ))}
       </div>
