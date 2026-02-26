@@ -1,5 +1,5 @@
 import { AdSlot } from '@/components/common';
-import { regionHubList } from '@/utils/region';
+import { regionHubList } from '@/constants/region';
 import {
   HeroSection,
   CuratedCoursesSection,

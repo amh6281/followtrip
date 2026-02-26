@@ -172,3 +172,7 @@ export const REGION_HUBS: Record<string, RegionHub> = {
     placeSlugs: ['gwangjang-market'],
   },
 };
+
+export const REGION_IDS = Object.keys(REGION_HUBS);
+
+export const regionHubList = REGION_IDS.map((id) => REGION_HUBS[id]);

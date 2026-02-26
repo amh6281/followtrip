@@ -1,5 +1,6 @@
 import { CourseCard } from '../molecules';
-import { getRegionCourses, regionHubList } from '@/utils/region';
+import { regionHubList } from '@/constants/region';
+import { findRegionCoursesBySlugs } from '@/utils/region';
 
 const CuratedCoursesSection = () => {
   const featuredRegion = regionHubList[0];
@@ -8,7 +9,7 @@ const CuratedCoursesSection = () => {
     return null;
   }
 
-  const featuredCourses = getRegionCourses(
+  const featuredCourses = findRegionCoursesBySlugs(
     featuredRegion.highlightCourseSlugs,
   ).slice(0, 3);
 
