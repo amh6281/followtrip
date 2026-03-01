@@ -1,4 +1,4 @@
-import { CourseCard } from '../molecules';
+import { CourseCard } from '@/components/common';
 import { regionHubList } from '@/constants/region';
 import { findRegionCoursesBySlugs } from '@/utils/region';
 

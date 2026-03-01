@@ -1,4 +1,4 @@
-import CourseCard from '@/components/home/molecules/CourseCard';
+import { CourseCard } from '@/components/common';
 import type { RegionCourse } from '@/types/region';
 
 interface RegionCoursesSectionProps {
