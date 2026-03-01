@@ -11,7 +11,7 @@ const CourseCard = ({ course, href }: CourseCardProps) => {
   return (
     <Link
       href={href}
-      className='border-border bg-background group hover:border-primary/40 relative block overflow-hidden rounded-2xl border p-4 transition-all hover:-translate-y-1 md:p-5'
+      className='border-border bg-background group hover:border-primary/40 hover:bg-primary/5 relative block overflow-hidden rounded-2xl border p-4 transition-all hover:-translate-y-1 md:p-5'
     >
       <div className='bg-sunset/10 absolute -top-10 -right-10 size-24 rounded-full blur-2xl transition-opacity group-hover:opacity-90' />
 
