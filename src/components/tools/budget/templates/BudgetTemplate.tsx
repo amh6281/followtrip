@@ -1,7 +1,7 @@
 import { AdSlot } from '@/components/common';
 import { BudgetContentSection, BudgetHeaderSection } from '../organisms';
 
-const BudgetCalculatorTemplate = () => {
+const BudgetTemplate = () => {
   return (
     <main className='min-h-[60vh]'>
       <div className='mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-14'>
@@ -25,4 +25,4 @@ const BudgetCalculatorTemplate = () => {
   );
 };
 
-export default BudgetCalculatorTemplate;
+export default BudgetTemplate;

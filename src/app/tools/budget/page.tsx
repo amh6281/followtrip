@@ -1,7 +1,7 @@
-import BudgetCalculatorTemplate from '@/components/tools/budget/templates/BudgetCalculatorTemplate';
+import BudgetTemplate from '@/components/tools/budget/templates/BudgetTemplate';
 
-const BudgetCalculatorPage = () => {
-  return <BudgetCalculatorTemplate />;
+const BudgetPage = () => {
+  return <BudgetTemplate />;
 };
 
-export default BudgetCalculatorPage;
+export default BudgetPage;
