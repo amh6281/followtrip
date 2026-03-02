@@ -33,7 +33,7 @@ export const COURSES: Record<string, RegionCourse> = {
         ],
       },
     ],
-    faq: [
+    tips: [
       '주말은 익선동 웨이팅이 길어 오전 방문이 유리합니다.',
       '대중교통 이동 기준 하루 15,000원 교통비를 잡으면 안정적입니다.',
     ],
@@ -55,7 +55,7 @@ export const COURSES: Record<string, RegionCourse> = {
         ],
       },
     ],
-    faq: ['도보 이동량이 많아 편한 신발을 권장합니다.'],
+    tips: ['도보 이동량이 많아 편한 신발을 권장합니다.'],
   },
 };
 

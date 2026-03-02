@@ -11,7 +11,7 @@ export interface RegionCourse {
   difficulty: string;
   target: string;
   days: RegionCourseDay[];
-  faq: string[];
+  tips: string[];
 }
 
 export interface RegionPlace {
