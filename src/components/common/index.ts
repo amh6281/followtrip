@@ -4,3 +4,4 @@ export { default as Select } from './Select';
 export { default as TagChip } from './TagChip';
 export { default as AdSlot } from './AdSlot';
 export { default as CourseCard } from './CourseCard';
+export { default as ToolLinkCard } from './ToolLinkCard';

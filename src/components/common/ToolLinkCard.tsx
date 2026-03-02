@@ -1,16 +1,26 @@
+import clsx from 'clsx';
 import Link from 'next/link';
 
 interface ToolLinkCardProps {
   href: string;
   title: string;
   description: string;
+  className?: string;
 }
 
-const ToolLinkCard = ({ href, title, description }: ToolLinkCardProps) => {
+const ToolLinkCard = ({
+  href,
+  title,
+  description,
+  className,
+}: ToolLinkCardProps) => {
   return (
     <Link
       href={href}
-      className='from-background to-muted/30 border-border hover:border-primary/40 hover:bg-primary/5 group flex items-center justify-between rounded-2xl border bg-linear-to-br p-5 transition-all hover:-translate-y-1 md:p-6'
+      className={clsx(
+        'border-border hover:border-primary/40 hover:bg-primary/5 group flex items-center justify-between rounded-2xl border p-5 transition-all md:p-6',
+        className,
+      )}
     >
       <div>
         <p className='text-foreground group-hover:text-primary text-base font-semibold transition-colors'>

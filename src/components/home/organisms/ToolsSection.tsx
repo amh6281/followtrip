@@ -1,4 +1,4 @@
-import { ToolLinkCard } from '../molecules';
+import { ToolLinkCard } from '@/components/common';
 
 const ToolsSection = () => {
   return (
