@@ -12,7 +12,9 @@ const RegionLinkCard = ({ regionId, name }: RegionLinkCardProps) => {
       href={`/${regionId}`}
       className='border-border bg-background hover:border-primary/40 hover:bg-primary/5 group flex items-center justify-between rounded-2xl border px-4 py-3 text-sm font-medium transition-all hover:-translate-y-0.5'
     >
-      <span className='text-foreground group-hover:text-primary transition-colors'>{name}</span>
+      <span className='text-foreground group-hover:text-primary transition-colors'>
+        {name}
+      </span>
       <MapPinIcon className='text-muted-foreground group-hover:text-primary size-4 transition-colors' />
     </Link>
   );
