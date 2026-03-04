@@ -4,6 +4,7 @@ import {
   PlaceBasicInfoSection,
   PlaceTipsSection,
   PlaceIncludedCoursesSection,
+  PlaceNearbyPlacesSection,
 } from '../organisms';
 import type { RegionPlace, RegionCourse } from '@/types/region';
 
@@ -41,6 +42,11 @@ const PlaceTemplate = ({
 
           <PlaceIncludedCoursesSection
             courses={includedCourses}
+            regionId={regionId}
+          />
+
+          <PlaceNearbyPlacesSection
+            nearbyPlaceSlugs={place.nearbyPlaceSlugs}
             regionId={regionId}
           />
 
