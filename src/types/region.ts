@@ -1,4 +1,4 @@
-export interface RegionCourseDay {
+interface RegionCourseDay {
   title: string;
   schedule: Array<{ time: string; placeId: string }>;
 }

@@ -13,7 +13,7 @@ const PlaceNearbyPlacesSection = ({
 }: PlaceNearbyPlacesSectionProps) => {
   const nearbyPlaces = nearbyPlaceSlugs
     .map((slug) => getRegionPlace(slug))
-    .filter(Boolean);
+    .filter((place): place is RegionPlace => place !== null);
 
   if (nearbyPlaces.length === 0) return null;
 
