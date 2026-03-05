@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getRegionPlace, getRegionCourse } from '@/utils/region';
-import { REGIONS } from '@/constants/region';
+import { REGIONS, PLACES } from '@/constants/region';
 import PlaceTemplate from '@/components/region/place/templates/PlaceTemplate';
 
 interface PlacePageProps {
@@ -8,8 +8,8 @@ interface PlacePageProps {
 }
 
 export async function generateStaticParams() {
-  const regions = ['seoul', 'busan', 'jeju', 'gangneung'];
-  const places = ['ikseondong', 'gwangjang-market', 'seongsu', 'bukchon'];
+  const regions = Object.keys(REGIONS);
+  const places = Object.keys(PLACES);
   return regions.flatMap((regionId) =>
     places.map((placeId) => ({ regionId, placeId })),
   );
