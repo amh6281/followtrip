@@ -1,4 +1,4 @@
-import type { RegionCourse, RegionPlace, RegionHub } from '@/types/region';
+import type { RegionCourse, RegionPlace, Region } from '@/types/region';
 
 export const COURSES: Record<string, RegionCourse> = {
   '2n3d-couple': {
@@ -122,7 +122,7 @@ export const PLACES: Record<string, RegionPlace> = {
   },
 };
 
-export const REGION_HUBS: Record<string, RegionHub> = {
+export const REGIONS: Record<string, Region> = {
   seoul: {
     id: 'seoul',
     name: '서울',
@@ -173,6 +173,6 @@ export const REGION_HUBS: Record<string, RegionHub> = {
   },
 };
 
-export const REGION_IDS = Object.keys(REGION_HUBS);
+export const REGION_IDS = Object.keys(REGIONS);
 
-export const regionHubList = REGION_IDS.map((id) => REGION_HUBS[id]);
+export const regionList = REGION_IDS.map((id) => REGIONS[id]);

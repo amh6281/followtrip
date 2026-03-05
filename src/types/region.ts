@@ -27,7 +27,7 @@ export interface RegionPlace {
   includedCourseSlugs: string[];
 }
 
-export interface RegionHub {
+export interface Region {
   id: string;
   name: string;
   subtitle: string;

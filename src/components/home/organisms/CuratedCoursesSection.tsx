@@ -1,9 +1,9 @@
 import { CourseCard } from '@/components/common';
-import { regionHubList } from '@/constants/region';
+import { regionList } from '@/constants/region';
 import { findRegionCoursesBySlugs } from '@/utils/region';
 
 const CuratedCoursesSection = () => {
-  const featuredRegion = regionHubList[0];
+  const featuredRegion = regionList[0];
 
   if (!featuredRegion) {
     return null;

@@ -1,8 +1,8 @@
 import { BackLink } from '@/components/common';
-import type { RegionHub } from '@/types/region';
+import type { Region } from '@/types/region';
 
 interface RegionHeaderSectionProps {
-  region: RegionHub;
+  region: Region;
 }
 
 const RegionHeaderSection = ({ region }: RegionHeaderSectionProps) => {

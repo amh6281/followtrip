@@ -1,4 +1,4 @@
-import { REGION_HUBS } from '@/constants/region';
+import { REGIONS } from '@/constants/region';
 import { RegionFilterChip } from '../molecules';
 
 interface RegionFilterSectionProps {
@@ -12,7 +12,7 @@ const RegionFilterSection = ({ currentRegionId }: RegionFilterSectionProps) => {
         지역별 보기
       </h2>
       <div className='flex flex-wrap gap-2'>
-        {Object.values(REGION_HUBS).map((region) => (
+        {Object.values(REGIONS).map((region) => (
           <RegionFilterChip
             key={region.id}
             regionId={region.id}

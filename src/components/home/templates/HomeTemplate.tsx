@@ -1,5 +1,5 @@
 import { AdSlot } from '@/components/common';
-import { regionHubList } from '@/constants/region';
+import { regionList } from '@/constants/region';
 import {
   HeroSection,
   CuratedCoursesSection,
@@ -10,7 +10,7 @@ import {
 const HomeTemplate = () => {
   return (
     <main className='min-h-[60vh]'>
-      <HeroSection regionCount={regionHubList.length} />
+      <HeroSection regionCount={regionList.length} />
 
       <div className='mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-14'>
         <div className='flex flex-col gap-12 lg:gap-16'>
@@ -21,7 +21,7 @@ const HomeTemplate = () => {
 
           <CuratedCoursesSection />
 
-          <RegionCoursesSection regions={regionHubList} />
+          <RegionCoursesSection regionList={regionList} />
 
           <ToolsSection />
 

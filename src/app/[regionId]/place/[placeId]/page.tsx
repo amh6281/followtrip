@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { getRegionPlace, getRegionCourse } from '@/utils/region';
-import { REGION_HUBS } from '@/constants/region';
+import { REGIONS } from '@/constants/region';
 import PlaceTemplate from '@/components/region/place/templates/PlaceTemplate';
 
 interface PlacePageProps {
@@ -30,7 +30,7 @@ const PlacePage = async ({ params }: PlacePageProps) => {
   const place = getRegionPlace(placeId);
   if (!place) notFound();
 
-  const region = REGION_HUBS[regionId];
+  const region = REGIONS[regionId];
   const regionName = region?.name ?? regionId;
 
   const includedCourses = place.includedCourseSlugs

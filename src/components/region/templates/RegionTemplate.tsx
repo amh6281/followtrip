@@ -4,12 +4,12 @@ import {
   RegionCoursesSection,
   RegionFilterSection,
 } from '../organisms';
-import type { RegionHub } from '@/types/region';
+import type { Region } from '@/types/region';
 import type { RegionCourse } from '@/types/region';
 
 interface RegionTemplateProps {
   regionId: string;
-  region: RegionHub;
+  region: Region;
   courses: RegionCourse[];
 }
 

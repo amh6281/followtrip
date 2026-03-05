@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import CourseTemplate from '@/components/region/course/templates/CourseTemplate';
 import { getRegionCourse } from '@/utils/region';
-import { REGION_HUBS } from '@/constants/region';
+import { REGIONS } from '@/constants/region';
 
 interface CoursePageProps {
   params: Promise<{ regionId: string; courseId: string }>;
@@ -10,7 +10,7 @@ interface CoursePageProps {
 const CoursePage = async ({ params }: CoursePageProps) => {
   const { regionId, courseId } = await params;
   const course = getRegionCourse(courseId);
-  const region = REGION_HUBS[regionId];
+  const region = REGIONS[regionId];
   const regionName = region?.name ?? regionId;
 
   if (!course) notFound();
