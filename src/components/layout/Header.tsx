@@ -8,9 +8,9 @@ const Header = () => {
           href='/'
           className='flex min-w-0 shrink-0 items-center gap-3 transition-opacity hover:opacity-90'
         >
-          <h1 className='from-primary to-accent bg-linear-to-r bg-clip-text text-2xl font-bold text-transparent max-md:text-xl'>
+          <span className='from-primary to-accent bg-linear-to-r bg-clip-text text-2xl font-bold text-transparent max-md:text-xl'>
             팔로우트립
-          </h1>
+          </span>
           <span className='border-border text-muted-foreground inline border-l pl-3 text-sm max-md:hidden'>
             여행을 그대로 따라가다
           </span>
