@@ -1,4 +1,4 @@
-import { Badge, SearchInput } from '../atoms';
+import { Badge } from '../atoms';
 import { RegionStatCard } from '../molecules';
 
 interface HeroSectionProps {
