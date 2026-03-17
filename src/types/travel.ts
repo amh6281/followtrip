@@ -31,6 +31,7 @@ export type WeatherFit =
   | 'cloudy'
   | 'rainy'
   | 'snowy'
+  | 'rain-friendly'
   | 'indoor'
   | 'outdoor'
   | 'all';
@@ -69,10 +70,11 @@ export type BudgetLevel = 'low' | 'mid' | 'high';
 
 // 구조화된 예산 정보
 export interface Budget {
-  level: BudgetLevel;
   min?: number;
   max?: number;
-  currency?: 'KRW';
+  currency: 'KRW';
+  basis: 'perPerson' | 'perTrip';
+  level?: BudgetLevel;
   text?: string;
 }
 
@@ -100,39 +102,43 @@ export interface Destination {
   foodKeywords: string[];
   itinerarySeeds: string[];
   faqSeeds: string[];
-  featuredPlaceIds?: string[];
-  featuredCourseIds?: string[];
+  featuredPlaceIds: string[];
+  featuredCourseIds: string[];
   updatedAt: string;
 }
 
 // 개별 장소 정보
 export interface RegionPlace {
+  id: string;
+  regionId: string;
   slug: string;
   name: string;
   address: string;
-  hours: string;
-  fee: string;
-  stayDuration: string;
-  bestVisitTime: string;
-  tips: string[];
-  nearbyPlaceSlugs: string[];
-  includedCourseSlugs: string[];
-  regionId?: string;
-  category?: PlaceCategory;
-  themes?: Theme[];
-  companions?: Companion[];
-  weatherFit?: WeatherFit[];
-  stayMinutes?: {
+  category: PlaceCategory;
+  themes: Theme[];
+  companions: Companion[];
+  weatherFit: WeatherFit[];
+  hoursText: string;
+  feeText: string;
+  stayMinutes: {
     min: number;
     max: number;
   };
-  bestTimeSlots?: TimeSlot[];
-  hoursText?: string;
-  feeText?: string;
-  nearbyPlaceIds?: string[];
+  bestTimeSlots: TimeSlot[];
+  tips: string[];
+  nearbyPlaceIds: string[];
+  summary?: string;
+  bestVisitText?: string;
+  legacy?: {
+    hours?: string;
+    fee?: string;
+    stayDuration?: string;
+    bestVisitTime?: string;
+    nearbyPlaceSlugs?: string[];
+    includedCourseSlugs?: string[];
+  };
 }
 
-// 코스 하루 일정
 export interface CourseTemplateDay {
   title: string;
   schedule: Array<{ time: string; placeId: string }>;
@@ -145,14 +151,13 @@ export interface CourseTemplate {
   slug: string;
   title: string;
   summary: string;
-  companions: Companion[];
   tripLength: {
     nights: number;
     days: number;
-    label?: TripLengthLabel;
   };
+  companions: Companion[];
   themes: Theme[];
-  mobility: Mobility[];
+  mobility: Mobility;
   weatherFit: WeatherFit[];
   budget: Budget;
   difficulty: Difficulty;
@@ -160,35 +165,30 @@ export interface CourseTemplate {
   tips: string[];
 }
 
-// 검색 의도형 랜딩 페이지 타입
-export interface LandingPage {
-  slug: string;
-  destinationSlug: string;
-  title: string;
-  summary: string;
-  intent:
-    | 'trip-length'
-    | 'weather'
-    | 'companion'
-    | 'theme'
-    | 'mobility'
-    | 'planner'
-    | 'faq';
-  tripLength?: TripLengthLabel;
-  weatherFit?: WeatherFit[];
+// 랜딩 페이지 의도 정보
+export interface LandingIntent {
+  nights?: number;
+  days?: number;
   companions?: Companion[];
   themes?: Theme[];
   mobility?: Mobility[];
-  heroSummary?: string;
+  weatherFit?: WeatherFit[];
+}
+
+// 랜딩 페이지 정보
+export interface LandingPage {
+  id: string;
+  regionId: string;
+  slug: string;
+  indexable: boolean;
+  intent: LandingIntent;
+  heroTitle: string;
+  heroDescription: string;
   intro?: string;
   highlights?: string[];
-  faqSeeds?: string[];
-  featuredPlaceIds?: string[];
-  featuredCourseIds?: string[];
-  seo: {
-    title: string;
-    description: string;
-  };
+  courseIds: string[];
+  featuredPlaceIds: string[];
+  relatedLandingIds?: string[];
   updatedAt: string;
 }
 
@@ -228,7 +228,18 @@ export interface Region {
 export type LegacyRegion = Region;
 
 // 레거시 장소 타입
-export type LegacyRegionPlace = RegionPlace;
+export type LegacyRegionPlace = {
+  slug: string;
+  name: string;
+  address: string;
+  hours: string;
+  fee: string;
+  stayDuration: string;
+  bestVisitTime: string;
+  tips: string[];
+  nearbyPlaceSlugs: string[];
+  includedCourseSlugs: string[];
+};
 
 // 레거시 코스 타입
 export type LegacyRegionCourse = RegionCourse;
