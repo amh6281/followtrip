@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import BudgetTemplate from '@/components/tools/budget/templates/BudgetTemplate';
-import { buildPageMetadata } from '@/lib/seo';
+import { buildPageMetadata } from '@/utils/seo';
 
 // 고정 페이지에 대한 metadata 생성
 export const metadata: Metadata = {

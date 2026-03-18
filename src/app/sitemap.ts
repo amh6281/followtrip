@@ -1,6 +1,6 @@
 import type { MetadataRoute } from 'next';
 import { REGIONS } from '@/constants/region';
-import { absoluteUrl } from '@/lib/seo';
+import { absoluteUrl } from '@/utils/seo';
 
 // 검색엔진이 색인할 공개 페이지를 정의한 sitemap
 const sitemap = (): MetadataRoute.Sitemap => {

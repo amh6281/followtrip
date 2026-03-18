@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import CourseTemplate from '@/components/region/course/templates/CourseTemplate';
 import { getRegionCourse } from '@/utils/region';
 import { REGIONS } from '@/constants/region';
-import { buildPageMetadata } from '@/lib/seo';
+import { buildPageMetadata } from '@/utils/seo';
 
 interface CoursePageProps {
   params: Promise<{ regionId: string; courseId: string }>;

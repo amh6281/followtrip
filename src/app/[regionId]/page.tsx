@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import RegionTemplate from '@/components/region/templates/RegionTemplate';
 import { REGIONS } from '@/constants/region';
-import { buildPageMetadata } from '@/lib/seo';
+import { buildPageMetadata } from '@/utils/seo';
 import { findRegionCoursesBySlugs } from '@/utils/region';
 
 interface RegionPageProps {

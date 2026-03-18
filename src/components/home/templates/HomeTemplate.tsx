@@ -1,7 +1,7 @@
 import Script from 'next/script';
 import { AdSlot } from '@/components/common';
 import { regionList } from '@/constants/region';
-import { absoluteUrl, SITE_DESCRIPTION, SITE_NAME } from '@/lib/seo';
+import { absoluteUrl, SITE_DESCRIPTION, SITE_NAME } from '@/utils/seo';
 import {
   HeroSection,
   CuratedCoursesSection,

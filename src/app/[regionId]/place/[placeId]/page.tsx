@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { getRegionPlace, getRegionCourse } from '@/utils/region';
 import { REGIONS } from '@/constants/region';
 import PlaceTemplate from '@/components/region/place/templates/PlaceTemplate';
-import { buildPageMetadata } from '@/lib/seo';
+import { buildPageMetadata } from '@/utils/seo';
 
 interface PlacePageProps {
   params: Promise<{ regionId: string; placeId: string }>;
