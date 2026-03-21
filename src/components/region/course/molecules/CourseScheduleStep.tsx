@@ -7,6 +7,7 @@ interface CourseScheduleStepProps {
   place: RegionPlace | null;
   placeId: string;
   regionId: string;
+  placeHref?: string;
 }
 
 const CourseScheduleStep = ({
@@ -14,6 +15,7 @@ const CourseScheduleStep = ({
   place,
   placeId,
   regionId,
+  placeHref,
 }: CourseScheduleStepProps) => {
   return (
     <div className='flex items-center gap-4 px-4 py-4 md:px-6'>
@@ -22,7 +24,7 @@ const CourseScheduleStep = ({
       </span>
       {place ? (
         <Link
-          href={`/${regionId}/place/${place.slug}`}
+          href={placeHref ?? `/${regionId}/place/${place.slug}`}
           className='text-foreground hover:text-primary flex flex-1 items-center gap-2 font-medium transition-colors'
         >
           <MapPinIcon className='size-4 shrink-0' />

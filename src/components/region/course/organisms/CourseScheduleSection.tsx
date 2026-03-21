@@ -5,11 +5,13 @@ import type { RegionCourse } from '@/types/region';
 interface CourseScheduleSectionProps {
   regionId: string;
   course: RegionCourse;
+  placeHrefBuilder?: (placeId: string, placeSlug?: string) => string;
 }
 
 const CourseScheduleSection = ({
   regionId,
   course,
+  placeHrefBuilder,
 }: CourseScheduleSectionProps) => {
   return (
     <section className='space-y-6'>
@@ -28,6 +30,10 @@ const CourseScheduleSection = ({
                   place={getRegionPlace(step.placeId)}
                   placeId={step.placeId}
                   regionId={regionId}
+                  placeHref={placeHrefBuilder?.(
+                    step.placeId,
+                    getRegionPlace(step.placeId)?.slug,
+                  )}
                 />
               ))}
             </div>
