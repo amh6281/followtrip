@@ -376,20 +376,21 @@ const DestinationPage = async ({ params }: DestinationPageProps) => {
 
           <div className='grid gap-4 md:grid-cols-2 xl:grid-cols-3'>
             {relatedLandings.map((landing) => (
-              <article
+              <Link
                 key={landing.id}
+                href={`/trips/${destination.slug}/${landing.slug}`}
                 className='border-border bg-background rounded-2xl border p-5'
               >
                 <div className='flex items-center justify-between gap-3'>
                   <p className='text-base font-semibold'>{landing.heroTitle}</p>
                   <span className='text-primary bg-primary/10 rounded-full px-2.5 py-1 text-[11px] font-medium'>
-                    준비 중
+                    바로 보기
                   </span>
                 </div>
                 <p className='text-muted-foreground mt-2 text-sm leading-6'>
                   {landing.heroDescription}
                 </p>
-              </article>
+              </Link>
             ))}
           </div>
         </section>
