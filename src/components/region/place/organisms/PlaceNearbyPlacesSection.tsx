@@ -5,11 +5,13 @@ import type { RegionPlace } from '@/types/region';
 interface PlaceNearbyPlacesSectionProps {
   nearbyPlaceSlugs: RegionPlace['nearbyPlaceSlugs'];
   regionId: string;
+  placeHrefBuilder?: (place: RegionPlace) => string;
 }
 
 const PlaceNearbyPlacesSection = ({
   nearbyPlaceSlugs,
   regionId,
+  placeHrefBuilder,
 }: PlaceNearbyPlacesSectionProps) => {
   const nearbyPlaces = nearbyPlaceSlugs
     .map((slug) => getRegionPlace(slug))
@@ -26,7 +28,9 @@ const PlaceNearbyPlacesSection = ({
         {nearbyPlaces.map((place) => (
           <PlaceLink
             key={place.slug}
-            href={`/${regionId}/place/${place.slug}`}
+            href={
+              placeHrefBuilder?.(place) ?? `/${regionId}/place/${place.slug}`
+            }
             name={place.name}
             address={place.address}
           />
