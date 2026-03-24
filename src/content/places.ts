@@ -114,7 +114,11 @@ export const PLACES: Record<string, RegionPlace> = {
       stayDuration: '1.5시간',
       bestVisitTime: '오전 9시~10시 30분',
       nearbyPlaceSlugs: ['ikseondong', 'gwangjang-market'],
-      includedCourseSlugs: ['2n3d-couple', '1day-city'],
+      includedCourseSlugs: [
+        '2n3d-couple',
+        '1day-city',
+        'seoul-palace-river-1day',
+      ],
     },
   },
   'gwanghwamun-square': {
@@ -230,7 +234,7 @@ export const PLACES: Record<string, RegionPlace> = {
       stayDuration: '40분~1시간',
       bestVisitTime: '오후 3시 이후',
       nearbyPlaceSlugs: ['gamcheon-village', 'haeundae-beach'],
-      includedCourseSlugs: ['busan-east-west-1n2d'],
+      includedCourseSlugs: ['busan-east-west-1n2d', 'busan-night-view-1day'],
     },
   },
   'haeundae-beach': {
@@ -259,7 +263,7 @@ export const PLACES: Record<string, RegionPlace> = {
       stayDuration: '1~2시간',
       bestVisitTime: '해질 무렵',
       nearbyPlaceSlugs: ['gamcheon-village', 'huinnyeoul-tunnel'],
-      includedCourseSlugs: ['busan-east-west-1n2d'],
+      includedCourseSlugs: ['busan-east-west-1n2d', 'busan-night-view-1day'],
     },
   },
   'gwangalli-beach': {
@@ -520,7 +524,10 @@ export const PLACES: Record<string, RegionPlace> = {
       stayDuration: '1~1.5시간',
       bestVisitTime: '오후 4시 이후',
       nearbyPlaceSlugs: ['ojukheon', 'anmok-beach'],
-      includedCourseSlugs: ['gangneung-coast-1day'],
+      includedCourseSlugs: [
+        'gangneung-coast-1day',
+        'gangneung-cafe-healing-1day',
+      ],
     },
   },
   'anmok-beach': {
@@ -549,7 +556,10 @@ export const PLACES: Record<string, RegionPlace> = {
       stayDuration: '1~2시간',
       bestVisitTime: '해질 무렵',
       nearbyPlaceSlugs: ['gyeongpo-beach', 'ojukheon'],
-      includedCourseSlugs: ['gangneung-coast-1day'],
+      includedCourseSlugs: [
+        'gangneung-coast-1day',
+        'gangneung-cafe-healing-1day',
+      ],
     },
   },
   'chodang-sundubu-village': {
