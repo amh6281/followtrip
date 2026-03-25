@@ -1,8 +1,16 @@
-import { REGIONS } from '@/constants/region';
+import {
+  COURSES as LEGACY_COURSES,
+  PLACES as LEGACY_PLACES,
+  REGIONS,
+} from '@/constants/region';
 import { COURSES, courseList } from '@/content/courses';
 import { DESTINATIONS, destinationList } from '@/content/destinations';
 import { LANDINGS, landingList } from '@/content/landings';
 import { PLACES, placeList } from '@/content/places';
+import type {
+  RegionCourse as LegacyRegionCourse,
+  RegionPlace as LegacyRegionPlace,
+} from '@/types/region';
 import type {
   CourseTemplate,
   Destination,
@@ -38,6 +46,7 @@ export const landings = LANDINGS;
 
 // 기존 지역 화면 호환용 레거시 지역 데이터
 export const legacyRegions = REGIONS;
+export const legacyRegionList = Object.values(REGIONS);
 
 // 각 콘텐츠 컬렉션의 리스트 형태
 export { destinationList, placeList, courseList, landingList };
@@ -93,6 +102,24 @@ export const destinationById = (regionId: string): Destination | null =>
 // region id로 레거시 지역 데이터를 조회
 export const regionById = (regionId: string): Region | null =>
   REGIONS[regionId] ?? null;
+
+// 레거시 course slug로 단일 코스를 조회
+export const legacyCourseBySlug = (
+  courseSlug: string,
+): LegacyRegionCourse | null => LEGACY_COURSES[courseSlug] ?? null;
+
+// 레거시 place slug로 단일 장소를 조회
+export const legacyPlaceBySlug = (
+  placeSlug: string,
+): LegacyRegionPlace | null => LEGACY_PLACES[placeSlug] ?? null;
+
+// 레거시 course slug 배열을 실제 코스 배열로 변환
+export const getLegacyCoursesBySlugs = (
+  slugs: string[],
+): LegacyRegionCourse[] =>
+  slugs
+    .map((slug) => legacyCourseBySlug(slug))
+    .filter((course): course is LegacyRegionCourse => course !== null);
 
 // 특정 지역에 속한 장소 목록을 반환
 export const getPlacesByRegionId = (regionId: string): RegionPlace[] =>
