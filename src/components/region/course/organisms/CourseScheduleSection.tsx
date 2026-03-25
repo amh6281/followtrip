@@ -1,4 +1,4 @@
-import { getRegionPlace } from '@/utils/region';
+import { legacyPlaceBySlug } from '@/utils/selectors';
 import { CourseScheduleStep } from '../molecules';
 import type { RegionCourse } from '@/types/region';
 
@@ -27,12 +27,12 @@ const CourseScheduleSection = ({
                 <CourseScheduleStep
                   key={`${step.time}-${step.placeId}`}
                   time={step.time}
-                  place={getRegionPlace(step.placeId)}
+                  place={legacyPlaceBySlug(step.placeId)}
                   placeId={step.placeId}
                   regionId={regionId}
                   placeHref={placeHrefBuilder?.(
                     step.placeId,
-                    getRegionPlace(step.placeId)?.slug,
+                    legacyPlaceBySlug(step.placeId)?.slug,
                   )}
                 />
               ))}

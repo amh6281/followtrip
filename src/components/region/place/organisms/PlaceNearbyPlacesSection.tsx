@@ -1,5 +1,5 @@
 import { PlaceLink } from '../molecules';
-import { getRegionPlace } from '@/utils/region';
+import { legacyPlaceBySlug } from '@/utils/selectors';
 import type { RegionPlace } from '@/types/region';
 
 interface PlaceNearbyPlacesSectionProps {
@@ -14,7 +14,7 @@ const PlaceNearbyPlacesSection = ({
   placeHrefBuilder,
 }: PlaceNearbyPlacesSectionProps) => {
   const nearbyPlaces = nearbyPlaceSlugs
-    .map((slug) => getRegionPlace(slug))
+    .map((slug) => legacyPlaceBySlug(slug))
     .filter((place): place is RegionPlace => place !== null);
 
   if (nearbyPlaces.length === 0) return null;
