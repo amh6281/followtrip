@@ -6,7 +6,7 @@ import {
   SITE_DESCRIPTION,
   SITE_TITLE,
   siteUrl,
-} from '@/lib/seo';
+} from '@/utils/seo';
 
 const baseMetadata = buildPageMetadata({
   title: SITE_TITLE,

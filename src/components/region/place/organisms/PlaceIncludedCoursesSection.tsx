@@ -4,11 +4,13 @@ import type { RegionCourse } from '@/types/region';
 interface PlaceIncludedCoursesSectionProps {
   courses: RegionCourse[];
   regionId: string;
+  courseHrefBuilder?: (course: RegionCourse) => string;
 }
 
 const PlaceIncludedCoursesSection = ({
   courses,
   regionId,
+  courseHrefBuilder,
 }: PlaceIncludedCoursesSectionProps) => {
   if (courses.length === 0) return null;
 
@@ -21,7 +23,7 @@ const PlaceIncludedCoursesSection = ({
         {courses.map((course) => (
           <PlaceCourseLink
             key={course.slug}
-            href={`/${regionId}/${course.slug}`}
+            href={courseHrefBuilder?.(course) ?? `/${regionId}/${course.slug}`}
             title={course.title}
           />
         ))}

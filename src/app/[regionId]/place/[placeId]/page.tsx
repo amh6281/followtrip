@@ -1,8 +1,12 @@
 import { notFound } from 'next/navigation';
-import { getRegionPlace, getRegionCourse } from '@/utils/region';
-import { REGIONS } from '@/constants/region';
 import PlaceTemplate from '@/components/region/place/templates/PlaceTemplate';
-import { buildPageMetadata } from '@/lib/seo';
+import { buildPageMetadata } from '@/utils/seo';
+import {
+  getLegacyCoursesBySlugs,
+  legacyPlaceBySlug,
+  legacyRegionList,
+  regionById,
+} from '@/utils/selectors';
 
 interface PlacePageProps {
   params: Promise<{ regionId: string; placeId: string }>;
@@ -13,7 +17,7 @@ export const dynamicParams = false;
 
 // 빌드 시 places 경로 정적 생성
 export async function generateStaticParams() {
-  return Object.values(REGIONS).flatMap((region) =>
+  return legacyRegionList.flatMap((region) =>
     region.placeSlugs.map((placeId) => ({
       regionId: region.id,
       placeId,
@@ -24,8 +28,8 @@ export async function generateStaticParams() {
 // 각 place 페이지에 대한 metadata 생성
 export async function generateMetadata({ params }: PlacePageProps) {
   const { regionId, placeId } = await params;
-  const place = getRegionPlace(placeId);
-  const region = REGIONS[regionId];
+  const place = legacyPlaceBySlug(placeId);
+  const region = regionById(regionId);
   const isValidPlace = region?.placeSlugs.includes(placeId);
   if (!place || !region || !isValidPlace) return {};
   return buildPageMetadata({
@@ -37,15 +41,13 @@ export async function generateMetadata({ params }: PlacePageProps) {
 
 const PlacePage = async ({ params }: PlacePageProps) => {
   const { regionId, placeId } = await params;
-  const place = getRegionPlace(placeId);
-  const region = REGIONS[regionId];
+  const place = legacyPlaceBySlug(placeId);
+  const region = regionById(regionId);
   const isValidPlace = region?.placeSlugs.includes(placeId);
 
   if (!place || !region || !isValidPlace) notFound();
 
-  const includedCourses = place.includedCourseSlugs
-    .map((slug) => getRegionCourse(slug))
-    .filter(Boolean);
+  const includedCourses = getLegacyCoursesBySlugs(place.includedCourseSlugs);
 
   return (
     <PlaceTemplate

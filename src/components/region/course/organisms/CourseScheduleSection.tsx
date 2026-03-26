@@ -1,15 +1,17 @@
-import { getRegionPlace } from '@/utils/region';
+import { legacyPlaceBySlug } from '@/utils/selectors';
 import { CourseScheduleStep } from '../molecules';
 import type { RegionCourse } from '@/types/region';
 
 interface CourseScheduleSectionProps {
   regionId: string;
   course: RegionCourse;
+  placeHrefBuilder?: (placeId: string, placeSlug?: string) => string;
 }
 
 const CourseScheduleSection = ({
   regionId,
   course,
+  placeHrefBuilder,
 }: CourseScheduleSectionProps) => {
   return (
     <section className='space-y-6'>
@@ -25,9 +27,13 @@ const CourseScheduleSection = ({
                 <CourseScheduleStep
                   key={`${step.time}-${step.placeId}`}
                   time={step.time}
-                  place={getRegionPlace(step.placeId)}
+                  place={legacyPlaceBySlug(step.placeId)}
                   placeId={step.placeId}
                   regionId={regionId}
+                  placeHref={placeHrefBuilder?.(
+                    step.placeId,
+                    legacyPlaceBySlug(step.placeId)?.slug,
+                  )}
                 />
               ))}
             </div>

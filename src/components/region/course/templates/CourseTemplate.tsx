@@ -11,12 +11,16 @@ interface CourseTemplateProps {
   regionId: string;
   regionName: string;
   course: RegionCourse;
+  backHref?: string;
+  placeHrefBuilder?: (placeId: string, placeSlug?: string) => string;
 }
 
 const CourseTemplate = ({
   regionId,
   regionName,
   course,
+  backHref,
+  placeHrefBuilder,
 }: CourseTemplateProps) => {
   return (
     <main className='min-h-[60vh]'>
@@ -24,6 +28,7 @@ const CourseTemplate = ({
         regionId={regionId}
         regionName={regionName}
         course={course}
+        backHref={backHref}
       />
 
       <div className='mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-14'>
@@ -35,7 +40,11 @@ const CourseTemplate = ({
 
           <CourseSummaryCard course={course} />
 
-          <CourseScheduleSection regionId={regionId} course={course} />
+          <CourseScheduleSection
+            regionId={regionId}
+            course={course}
+            placeHrefBuilder={placeHrefBuilder}
+          />
 
           <ToolLinkCard
             href='/tools/budget'

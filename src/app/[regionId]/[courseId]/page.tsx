@@ -1,8 +1,11 @@
 import { notFound } from 'next/navigation';
 import CourseTemplate from '@/components/region/course/templates/CourseTemplate';
-import { getRegionCourse } from '@/utils/region';
-import { REGIONS } from '@/constants/region';
-import { buildPageMetadata } from '@/lib/seo';
+import { buildPageMetadata } from '@/utils/seo';
+import {
+  legacyCourseBySlug,
+  legacyRegionList,
+  regionById,
+} from '@/utils/selectors';
 
 interface CoursePageProps {
   params: Promise<{ regionId: string; courseId: string }>;
@@ -13,7 +16,7 @@ export const dynamicParams = false;
 
 // 빌드 시 courses 경로 정적 생성
 export async function generateStaticParams() {
-  return Object.values(REGIONS).flatMap((region) =>
+  return legacyRegionList.flatMap((region) =>
     region.highlightCourseSlugs.map((courseId) => ({
       regionId: region.id,
       courseId,
@@ -24,8 +27,8 @@ export async function generateStaticParams() {
 // 각 course 페이지에 대한 metadata 생성
 export async function generateMetadata({ params }: CoursePageProps) {
   const { regionId, courseId } = await params;
-  const course = getRegionCourse(courseId);
-  const region = REGIONS[regionId];
+  const course = legacyCourseBySlug(courseId);
+  const region = regionById(regionId);
   const isValidCourse = region?.highlightCourseSlugs.includes(courseId);
   if (!course || !region || !isValidCourse) return {};
   return buildPageMetadata({
@@ -37,8 +40,8 @@ export async function generateMetadata({ params }: CoursePageProps) {
 
 const CoursePage = async ({ params }: CoursePageProps) => {
   const { regionId, courseId } = await params;
-  const course = getRegionCourse(courseId);
-  const region = REGIONS[regionId];
+  const course = legacyCourseBySlug(courseId);
+  const region = regionById(regionId);
   const isValidCourse = region?.highlightCourseSlugs.includes(courseId);
 
   if (!course || !region || !isValidCourse) notFound();

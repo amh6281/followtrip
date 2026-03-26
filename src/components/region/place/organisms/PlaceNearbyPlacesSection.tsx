@@ -1,18 +1,20 @@
 import { PlaceLink } from '../molecules';
-import { getRegionPlace } from '@/utils/region';
+import { legacyPlaceBySlug } from '@/utils/selectors';
 import type { RegionPlace } from '@/types/region';
 
 interface PlaceNearbyPlacesSectionProps {
   nearbyPlaceSlugs: RegionPlace['nearbyPlaceSlugs'];
   regionId: string;
+  placeHrefBuilder?: (place: RegionPlace) => string;
 }
 
 const PlaceNearbyPlacesSection = ({
   nearbyPlaceSlugs,
   regionId,
+  placeHrefBuilder,
 }: PlaceNearbyPlacesSectionProps) => {
   const nearbyPlaces = nearbyPlaceSlugs
-    .map((slug) => getRegionPlace(slug))
+    .map((slug) => legacyPlaceBySlug(slug))
     .filter((place): place is RegionPlace => place !== null);
 
   if (nearbyPlaces.length === 0) return null;
@@ -26,7 +28,9 @@ const PlaceNearbyPlacesSection = ({
         {nearbyPlaces.map((place) => (
           <PlaceLink
             key={place.slug}
-            href={`/${regionId}/place/${place.slug}`}
+            href={
+              placeHrefBuilder?.(place) ?? `/${regionId}/place/${place.slug}`
+            }
             name={place.name}
             address={place.address}
           />

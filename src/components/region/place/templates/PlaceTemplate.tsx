@@ -13,6 +13,9 @@ interface PlaceTemplateProps {
   regionId: string;
   regionName: string;
   includedCourses: RegionCourse[];
+  backHref?: string;
+  courseHrefBuilder?: (course: RegionCourse) => string;
+  placeHrefBuilder?: (place: RegionPlace) => string;
 }
 
 const PlaceTemplate = ({
@@ -20,6 +23,9 @@ const PlaceTemplate = ({
   regionId,
   regionName,
   includedCourses,
+  backHref,
+  courseHrefBuilder,
+  placeHrefBuilder,
 }: PlaceTemplateProps) => {
   return (
     <main className='min-h-[60vh]'>
@@ -27,6 +33,7 @@ const PlaceTemplate = ({
         place={place}
         regionId={regionId}
         regionName={regionName}
+        backHref={backHref}
       />
 
       <div className='mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-14'>
@@ -43,11 +50,13 @@ const PlaceTemplate = ({
           <PlaceIncludedCoursesSection
             courses={includedCourses}
             regionId={regionId}
+            courseHrefBuilder={courseHrefBuilder}
           />
 
           <PlaceNearbyPlacesSection
             nearbyPlaceSlugs={place.nearbyPlaceSlugs}
             regionId={regionId}
+            placeHrefBuilder={placeHrefBuilder}
           />
 
           <AdSlot

@@ -1,606 +1,140 @@
-import type { RegionCourse, RegionPlace, Region } from '@/types/region';
+import { COURSES as CONTENT_COURSES } from '@/content/courses';
+import { DESTINATIONS } from '@/content/destinations';
+import { PLACES as CONTENT_PLACES } from '@/content/places';
+import type { Region, RegionCourse, RegionPlace } from '@/types/region';
 
-export const COURSES: Record<string, RegionCourse> = {
-  '2n3d-couple': {
-    slug: '2n3d-couple',
-    title: '서울 2박3일 커플 여행 코스',
-    summary: '도보와 지하철 위주로 이동 가능한 감성 코스',
-    budgetRange: '40~60만원',
-    difficulty: '쉬움',
-    target: '20~30대 커플',
-    days: [
-      {
-        title: 'Day 1',
-        schedule: [
-          { time: '10:00', placeId: 'ikseondong' },
-          { time: '12:00', placeId: 'gwangjang-market' },
-          { time: '15:00', placeId: 'seongsu' },
-        ],
-      },
-      {
-        title: 'Day 2',
-        schedule: [
-          { time: '10:30', placeId: 'bukchon' },
-          { time: '13:00', placeId: 'ikseondong' },
-          { time: '18:00', placeId: 'seongsu' },
-        ],
-      },
-      {
-        title: 'Day 3',
-        schedule: [
-          { time: '09:30', placeId: 'gwangjang-market' },
-          { time: '12:30', placeId: 'bukchon' },
-        ],
-      },
-    ],
-    tips: [
-      '주말은 익선동 웨이팅이 길어 오전 방문이 유리합니다.',
-      '대중교통 이동 기준 하루 15,000원 교통비를 잡으면 안정적입니다.',
-    ],
-  },
-  '1day-city': {
-    slug: '1day-city',
-    title: '서울 당일치기 코스',
-    summary: '아침부터 저녁까지 압축한 도심 코스',
-    budgetRange: '12~20만원',
-    difficulty: '보통',
-    target: '친구/가족 소규모',
-    days: [
-      {
-        title: 'Day 1',
-        schedule: [
-          { time: '09:00', placeId: 'gwangjang-market' },
-          { time: '11:30', placeId: 'bukchon' },
-          { time: '15:00', placeId: 'ikseondong' },
-        ],
-      },
-    ],
-    tips: ['도보 이동량이 많아 편한 신발을 권장합니다.'],
-  },
-  'seoul-palace-river-1day': {
-    slug: 'seoul-palace-river-1day',
-    title: '서울 궁궐·한강 하루 코스',
-    summary: '북촌에서 시작해 광화문과 한강 야경까지 이어지는 클래식 코스',
-    budgetRange: '15~25만원',
-    difficulty: '보통',
-    target: '첫 서울 여행·부모님 동반',
-    days: [
-      {
-        title: 'Day 1',
-        schedule: [
-          { time: '09:30', placeId: 'bukchon' },
-          { time: '12:00', placeId: 'gwanghwamun-square' },
-          { time: '18:30', placeId: 'banpo-hangang-park' },
-        ],
-      },
-    ],
-    tips: [
-      '광화문 일대는 전시나 행사 여부에 따라 체류 시간이 늘어날 수 있습니다.',
-      '반포한강공원은 저녁 바람이 강해 겉옷을 챙기면 편합니다.',
-    ],
-  },
-  'busan-east-west-1n2d': {
-    slug: 'busan-east-west-1n2d',
-    title: '부산 1박2일 바다·감성 코스',
-    summary: '감천문화마을과 영도, 해운대를 잇는 첫 부산 여행 코스',
-    budgetRange: '20~35만원',
-    difficulty: '보통',
-    target: '커플·친구 여행',
-    days: [
-      {
-        title: 'Day 1',
-        schedule: [
-          { time: '10:30', placeId: 'gamcheon-village' },
-          { time: '14:30', placeId: 'huinnyeoul-tunnel' },
-        ],
-      },
-      {
-        title: 'Day 2',
-        schedule: [{ time: '16:00', placeId: 'haeundae-beach' }],
-      },
-    ],
-    tips: [
-      '감천문화마을은 주민 거주지라 조용히 이동하는 편이 좋습니다.',
-      '영도와 해운대는 이동 거리가 있어 대중교통 또는 택시 동선을 미리 잡아두면 편합니다.',
-    ],
-  },
-  'busan-night-view-1day': {
-    slug: 'busan-night-view-1day',
-    title: '부산 야경·해변 하루 코스',
-    summary: '흰여울과 광안리, 해운대까지 이어지는 저녁 중심 부산 코스',
-    budgetRange: '12~24만원',
-    difficulty: '쉬움',
-    target: '커플·야경 선호 여행',
-    days: [
-      {
-        title: 'Day 1',
-        schedule: [
-          { time: '14:00', placeId: 'huinnyeoul-tunnel' },
-          { time: '17:30', placeId: 'gwangalli-beach' },
-          { time: '20:00', placeId: 'haeundae-beach' },
-        ],
-      },
-    ],
-    tips: [
-      '광안리와 해운대 모두 저녁 시간대 보행 인구가 많아 이동 시간을 넉넉히 잡는 편이 좋습니다.',
-      '야경 촬영 위주라면 해 질 무렵부터 2시간 정도 여유를 두는 구성이 편합니다.',
-    ],
-  },
-  'jeju-east-coast-1day': {
-    slug: 'jeju-east-coast-1day',
-    title: '제주 동부 하루 코스',
-    summary: '성산일출봉, 섭지코지, 우도를 중심으로 묶은 동부 핵심 코스',
-    budgetRange: '15~30만원',
-    difficulty: '보통',
-    target: '렌터카·드라이브 여행',
-    days: [
-      {
-        title: 'Day 1',
-        schedule: [
-          { time: '08:00', placeId: 'seongsan-ilchulbong' },
-          { time: '11:30', placeId: 'seopjikoji' },
-          { time: '14:30', placeId: 'udo-island' },
-        ],
-      },
-    ],
-    tips: [
-      '성산일출봉은 계절별 운영시간이 달라 출발 전에 공식 안내를 다시 확인하는 편이 안전합니다.',
-      '우도는 배편 시간과 차량 선적 여부에 따라 체류 시간이 크게 달라질 수 있습니다.',
-    ],
-  },
-  'jeju-west-drive-1day': {
-    slug: 'jeju-west-drive-1day',
-    title: '제주 서부 드라이브 코스',
-    summary: '오설록과 협재, 한림공원을 중심으로 짠 여유로운 서부 코스',
-    budgetRange: '18~32만원',
-    difficulty: '쉬움',
-    target: '렌터카·가족 여행',
-    days: [
-      {
-        title: 'Day 1',
-        schedule: [
-          { time: '10:00', placeId: 'osulloc' },
-          { time: '13:30', placeId: 'hyeopjae-beach' },
-          { time: '16:00', placeId: 'hallim-park' },
-        ],
-      },
-    ],
-    tips: [
-      '서부 해안은 바람이 강한 날이 많아 해변 체류 시간을 유연하게 잡는 편이 좋습니다.',
-      '카페와 디저트 코스를 함께 넣으면 체감 만족도가 높습니다.',
-    ],
-  },
-  'gangneung-coast-1day': {
-    slug: 'gangneung-coast-1day',
-    title: '강릉 바다·문화 하루 코스',
-    summary: '오죽헌에서 시작해 경포와 안목해변까지 이어지는 강릉 대표 코스',
-    budgetRange: '10~22만원',
-    difficulty: '쉬움',
-    target: '가족·당일치기 여행',
-    days: [
-      {
-        title: 'Day 1',
-        schedule: [
-          { time: '10:00', placeId: 'ojukheon' },
-          { time: '13:30', placeId: 'gyeongpo-beach' },
-          { time: '17:00', placeId: 'anmok-beach' },
-        ],
-      },
-    ],
-    tips: [
-      '오죽헌은 실내 관람 마감 시간이 있으니 늦은 오후 방문은 피하는 편이 좋습니다.',
-      '안목해변은 주말 주차가 빠르게 차는 편이라 늦은 오후에는 도보 이동이 편할 수 있습니다.',
-    ],
-  },
-  'gangneung-cafe-healing-1day': {
-    slug: 'gangneung-cafe-healing-1day',
-    title: '강릉 카페·힐링 하루 코스',
-    summary: '초당과 안목, 경포호를 여유롭게 잇는 감성 중심 강릉 코스',
-    budgetRange: '11~24만원',
-    difficulty: '쉬움',
-    target: '친구·혼자 여행',
-    days: [
-      {
-        title: 'Day 1',
-        schedule: [
-          { time: '10:30', placeId: 'chodang-sundubu-village' },
-          { time: '13:30', placeId: 'gyeongpo-beach' },
-          { time: '16:30', placeId: 'anmok-beach' },
-        ],
-      },
-    ],
-    tips: [
-      '초당 순두부 마을은 점심 시간 대기가 길 수 있어 조금 이른 방문이 유리합니다.',
-      '안목 카페거리는 해 질 무렵 이후 좌석 대기가 생길 수 있습니다.',
-    ],
-  },
+const LEGACY_COURSE_ID_MAP: Record<string, string> = {
+  '2n3d-couple': 'seoul-2n3d-couple',
+  '1day-city': 'seoul-1day-city',
+  'seoul-palace-river-1day': 'seoul-palace-river-1day',
+  'busan-east-west-1n2d': 'busan-east-west-1n2d',
+  'busan-night-view-1day': 'busan-night-view-1day',
+  'jeju-east-coast-1day': 'jeju-east-coast-1day',
+  'jeju-west-drive-1day': 'jeju-west-drive-1day',
+  'gangneung-coast-1day': 'gangneung-coast-1day',
+  'gangneung-cafe-healing-1day': 'gangneung-cafe-healing-1day',
 };
 
-export const PLACES: Record<string, RegionPlace> = {
-  ikseondong: {
-    slug: 'ikseondong',
-    name: '익선동 한옥거리',
-    address: '서울 종로구 익선동 일대',
-    hours: '상점별 상이 (대부분 11:00~22:00)',
-    fee: '무료',
-    stayDuration: '1~2시간',
-    bestVisitTime: '평일 오전 11시 이전',
-    tips: [
-      '골목 안쪽 카페는 오픈 직후가 가장 한산합니다.',
-      '야간 조명 스팟은 해질 무렵 촬영이 좋습니다.',
-    ],
-    nearbyPlaceSlugs: ['gwangjang-market', 'bukchon'],
-    includedCourseSlugs: ['2n3d-couple', '1day-city'],
-  },
-  'gwangjang-market': {
-    slug: 'gwangjang-market',
-    name: '광장시장',
-    address: '서울 종로구 창경궁로 88',
-    hours: '09:00~23:00',
-    fee: '무료',
-    stayDuration: '1~1.5시간',
-    bestVisitTime: '오전 9시~11시',
-    tips: [
-      '점심 피크타임 전 방문 시 대기 시간이 짧습니다.',
-      '현금 결제가 편한 가게가 일부 있습니다.',
-    ],
-    nearbyPlaceSlugs: ['ikseondong', 'seongsu'],
-    includedCourseSlugs: ['2n3d-couple', '1day-city'],
-  },
-  seongsu: {
-    slug: 'seongsu',
-    name: '성수 카페거리',
-    address: '서울 성동구 성수동 일대',
-    hours: '상점별 상이 (대부분 10:00~21:00)',
-    fee: '무료',
-    stayDuration: '2시간',
-    bestVisitTime: '평일 오후 2시 전',
-    tips: [
-      '브런치 매장은 사전 예약 가능 여부를 확인하세요.',
-      '주말은 주차보다 지하철 접근이 빠릅니다.',
-    ],
-    nearbyPlaceSlugs: ['ikseondong', 'gwangjang-market'],
-    includedCourseSlugs: ['2n3d-couple'],
-  },
-  bukchon: {
-    slug: 'bukchon',
-    name: '북촌 한옥마을',
-    address: '서울 종로구 계동길 일대',
-    hours: '상시 개방',
-    fee: '무료',
-    stayDuration: '1.5시간',
-    bestVisitTime: '오전 9시~10시 30분',
-    tips: [
-      '주거 지역이 있어 정숙 관람이 필요합니다.',
-      '오르막 구간이 있어 편한 신발이 좋습니다.',
-    ],
-    nearbyPlaceSlugs: ['ikseondong', 'gwangjang-market'],
-    includedCourseSlugs: ['2n3d-couple', '1day-city'],
-  },
-  'gwanghwamun-square': {
-    slug: 'gwanghwamun-square',
-    name: '광화문광장',
-    address: '서울 종로구 세종대로 172',
-    hours: '상시 개방',
-    fee: '무료',
-    stayDuration: '40분~1시간',
-    bestVisitTime: '오전 10시 이전 또는 저녁',
-    tips: [
-      '주말 행사 여부에 따라 광장 동선이 달라질 수 있습니다.',
-      '경복궁, 청계천과 묶으면 도보 동선이 자연스럽습니다.',
-    ],
-    nearbyPlaceSlugs: ['bukchon', 'banpo-hangang-park'],
-    includedCourseSlugs: ['seoul-palace-river-1day'],
-  },
-  'banpo-hangang-park': {
-    slug: 'banpo-hangang-park',
-    name: '반포한강공원',
-    address: '서울 서초구 신반포로11길 40',
-    hours: '상시 개방',
-    fee: '무료',
-    stayDuration: '1~2시간',
-    bestVisitTime: '해질 무렵 이후',
-    tips: [
-      '돗자리나 가벼운 간식을 준비하면 체류 만족도가 높습니다.',
-      '주말 저녁은 주차보다 대중교통 접근이 수월합니다.',
-    ],
-    nearbyPlaceSlugs: ['gwanghwamun-square', 'seongsu'],
-    includedCourseSlugs: ['seoul-palace-river-1day'],
-  },
-  'gamcheon-village': {
-    slug: 'gamcheon-village',
-    name: '감천문화마을',
-    address: '부산 사하구 감내2로 203',
-    hours: '3~10월 09:00~18:00, 11~2월 09:00~17:00',
-    fee: '무료',
-    stayDuration: '1.5~2시간',
-    bestVisitTime: '평일 오전 또는 늦은 오후',
-    tips: [
-      '골목이 좁고 경사가 있어 편한 신발이 유리합니다.',
-      '실제 거주 지역이라 큰 소음은 피하는 편이 좋습니다.',
-    ],
-    nearbyPlaceSlugs: ['huinnyeoul-tunnel', 'haeundae-beach'],
-    includedCourseSlugs: ['busan-east-west-1n2d'],
-  },
-  'huinnyeoul-tunnel': {
-    slug: 'huinnyeoul-tunnel',
-    name: '흰여울해안터널',
-    address: '부산 영도구 영선동4가 1210-38',
-    hours: '연중 개방',
-    fee: '무료',
-    stayDuration: '40분~1시간',
-    bestVisitTime: '오후 3시 이후',
-    tips: [
-      '해안 산책로와 함께 보면 체감 체류 시간이 길어집니다.',
-      '터널 내부는 사진 촬영 대기 인원이 생길 수 있습니다.',
-    ],
-    nearbyPlaceSlugs: ['gamcheon-village', 'haeundae-beach'],
-    includedCourseSlugs: ['busan-east-west-1n2d'],
-  },
-  'haeundae-beach': {
-    slug: 'haeundae-beach',
-    name: '해운대해수욕장',
-    address: '부산 해운대구 해운대해변로 264',
-    hours: '상시 개방',
-    fee: '무료',
-    stayDuration: '1~2시간',
-    bestVisitTime: '해질 무렵',
-    tips: [
-      '일몰 시간대에는 해변과 빌딩 스카이라인을 함께 보기 좋습니다.',
-      '성수기와 주말에는 해변 주변 보행 인구가 많아 이동 시간이 길어질 수 있습니다.',
-    ],
-    nearbyPlaceSlugs: ['gamcheon-village', 'huinnyeoul-tunnel'],
-    includedCourseSlugs: ['busan-east-west-1n2d'],
-  },
-  'gwangalli-beach': {
-    slug: 'gwangalli-beach',
-    name: '광안리해수욕장',
-    address: '부산 수영구 광안해변로 219',
-    hours: '상시 개방',
-    fee: '무료',
-    stayDuration: '1~2시간',
-    bestVisitTime: '해질 무렵 이후',
-    tips: [
-      '광안대교 점등 시간 전후가 가장 사진 찍기 좋습니다.',
-      '해변 산책로와 카페 거리를 함께 보면 체류 시간이 길어질 수 있습니다.',
-    ],
-    nearbyPlaceSlugs: ['haeundae-beach', 'huinnyeoul-tunnel'],
-    includedCourseSlugs: ['busan-night-view-1day'],
-  },
-  'seongsan-ilchulbong': {
-    slug: 'seongsan-ilchulbong',
-    name: '성산일출봉',
-    address: '제주 서귀포시 성산읍 일출로 284-12',
-    hours: '동절기 06:00~18:00, 춘·추절기 05:00~19:00, 하절기 04:30~20:00',
-    fee: '정상 코스 유료, 해안 산책로 무료',
-    stayDuration: '1.5~2시간',
-    bestVisitTime: '이른 오전',
-    tips: [
-      '정상 코스는 계단 경사가 있어 운동화 착용이 편합니다.',
-      '매월 첫째 월요일은 휴관이며 공휴일이면 다음 날 휴관합니다.',
-    ],
-    nearbyPlaceSlugs: ['seopjikoji', 'udo-island'],
-    includedCourseSlugs: ['jeju-east-coast-1day'],
-  },
-  seopjikoji: {
-    slug: 'seopjikoji',
-    name: '섭지코지',
-    address: '제주 서귀포시 성산읍 섭지코지로 262',
-    hours: '연중 개방',
-    fee: '무료',
-    stayDuration: '1~1.5시간',
-    bestVisitTime: '오전 10시 이전 또는 늦은 오후',
-    tips: [
-      '해안 바람이 강한 날이 많아 얇은 겉옷을 챙기는 편이 좋습니다.',
-      '성산일출봉과 묶어 보면 동선이 자연스럽습니다.',
-    ],
-    nearbyPlaceSlugs: ['seongsan-ilchulbong', 'udo-island'],
-    includedCourseSlugs: ['jeju-east-coast-1day'],
-  },
-  'udo-island': {
-    slug: 'udo-island',
-    name: '우도(해양도립공원)',
-    address: '제주 제주시 우도면 삼양고수물길 1',
-    hours: '연중 개방',
-    fee: '입도 시간과 교통편은 선박 운영 상황에 따라 달라집니다.',
-    stayDuration: '3~4시간',
-    bestVisitTime: '오전 배편 입도',
-    tips: [
-      '성산포항 여객선 시간표를 먼저 확인해야 일정이 안정적입니다.',
-      '섬 전체를 보려면 전기차·스쿠터·버스 등 이동 수단 선택이 중요합니다.',
-    ],
-    nearbyPlaceSlugs: ['seongsan-ilchulbong', 'seopjikoji'],
-    includedCourseSlugs: ['jeju-east-coast-1day'],
-  },
-  osulloc: {
-    slug: 'osulloc',
-    name: '오설록 티뮤지엄',
-    address: '제주 서귀포시 안덕면 신화역사로 15',
-    hours: '09:00~18:00',
-    fee: '무료',
-    stayDuration: '1~1.5시간',
-    bestVisitTime: '오전 10시 전후',
-    tips: [
-      '기념품과 음료 주문 대기가 길어질 수 있어 여유 시간을 두는 편이 좋습니다.',
-      '인근 녹차밭 산책까지 포함하면 체류 시간이 늘어납니다.',
-    ],
-    nearbyPlaceSlugs: ['hyeopjae-beach', 'hallim-park'],
-    includedCourseSlugs: ['jeju-west-drive-1day'],
-  },
-  'hyeopjae-beach': {
-    slug: 'hyeopjae-beach',
-    name: '협재해수욕장',
-    address: '제주 제주시 한림읍 협재리 2497-1',
-    hours: '상시 개방',
-    fee: '무료',
-    stayDuration: '1~2시간',
-    bestVisitTime: '오후 2시 이후',
-    tips: [
-      '바닷색이 맑아 햇빛이 좋은 오후 시간대 만족도가 높습니다.',
-      '바람이 강한 날은 해변보다 인근 카페 위주로 동선을 바꾸는 편이 편합니다.',
-    ],
-    nearbyPlaceSlugs: ['osulloc', 'hallim-park'],
-    includedCourseSlugs: ['jeju-west-drive-1day'],
-  },
-  'hallim-park': {
-    slug: 'hallim-park',
-    name: '한림공원',
-    address: '제주 제주시 한림읍 한림로 300',
-    hours: '09:00~18:00',
-    fee: '성인 15,000원, 청소년 11,000원, 어린이 10,000원',
-    stayDuration: '1.5~2시간',
-    bestVisitTime: '오후 3시 전',
-    tips: [
-      '정원이 넓어 편한 신발이 좋습니다.',
-      '협재해변과 붙여 보면 이동 효율이 좋습니다.',
-    ],
-    nearbyPlaceSlugs: ['hyeopjae-beach', 'osulloc'],
-    includedCourseSlugs: ['jeju-west-drive-1day'],
-  },
-  ojukheon: {
-    slug: 'ojukheon',
-    name: '오죽헌·시립박물관',
-    address: '강원특별자치도 강릉시 율곡로3139번길 24',
-    hours: '관람 09:00~18:00, 입장 09:00~17:00',
-    fee: '어른 3,000원, 청소년·군인 2,000원, 어린이 1,000원',
-    stayDuration: '1~1.5시간',
-    bestVisitTime: '오전 10시 전후',
-    tips: [
-      '1월 1일, 설날, 추석 당일은 실내 전시실 운영 여부를 먼저 확인하는 편이 좋습니다.',
-      '강릉 대표 문화유산 동선의 출발점으로 잡기 좋습니다.',
-    ],
-    nearbyPlaceSlugs: ['gyeongpo-beach', 'anmok-beach'],
-    includedCourseSlugs: ['gangneung-coast-1day'],
-  },
-  'gyeongpo-beach': {
-    slug: 'gyeongpo-beach',
-    name: '경포해변',
-    address: '강원특별자치도 강릉시 안현동 산1',
-    hours: '개방 06:00~24:00',
-    fee: '무료',
-    stayDuration: '1~1.5시간',
-    bestVisitTime: '오후 4시 이후',
-    tips: [
-      '해변 산책과 경포호 주변 동선을 함께 잡으면 이동이 효율적입니다.',
-      '여름 성수기에는 수영 가능 시간이 별도로 운영됩니다.',
-    ],
-    nearbyPlaceSlugs: ['ojukheon', 'anmok-beach'],
-    includedCourseSlugs: ['gangneung-coast-1day'],
-  },
-  'anmok-beach': {
-    slug: 'anmok-beach',
-    name: '안목해변',
-    address: '강원특별자치도 강릉시 창해로14번길 20-1',
-    hours: '개방 06:00~24:00',
-    fee: '무료',
-    stayDuration: '1~2시간',
-    bestVisitTime: '해질 무렵',
-    tips: [
-      '카페거리와 함께 보기 좋은 해변이라 저녁 시간대 체류가 길어질 수 있습니다.',
-      '주말에는 주차보다 도보 이동이 더 빠를 때가 많습니다.',
-    ],
-    nearbyPlaceSlugs: ['gyeongpo-beach', 'ojukheon'],
-    includedCourseSlugs: ['gangneung-coast-1day'],
-  },
-  'chodang-sundubu-village': {
-    slug: 'chodang-sundubu-village',
-    name: '초당순두부마을',
-    address: '강원특별자치도 강릉시 초당순두부길 일대',
-    hours: '식당별 상이 (대부분 07:00~20:00)',
-    fee: '식당별 상이',
-    stayDuration: '1~1.5시간',
-    bestVisitTime: '오전 11시 이전',
-    tips: [
-      '주요 식당은 점심 시간에 대기가 길어질 수 있습니다.',
-      '경포호, 허균허난설헌 기념공원과 묶어 이동하기 좋습니다.',
-    ],
-    nearbyPlaceSlugs: ['gyeongpo-beach', 'anmok-beach'],
-    includedCourseSlugs: ['gangneung-cafe-healing-1day'],
-  },
+const LEGACY_HIGHLIGHT_COURSE_SLUGS: Record<string, string[]> = {
+  seoul: ['2n3d-couple', '1day-city', 'seoul-palace-river-1day'],
+  busan: ['busan-east-west-1n2d', 'busan-night-view-1day'],
+  jeju: ['jeju-east-coast-1day', 'jeju-west-drive-1day'],
+  gangneung: ['gangneung-coast-1day', 'gangneung-cafe-healing-1day'],
 };
 
-export const REGIONS: Record<string, Region> = {
-  seoul: {
-    id: 'seoul',
-    name: '서울',
-    subtitle: '서울 여행 가이드',
-    updatedAt: '2026-02-19',
-    recommendedDuration: '2박3일',
-    averageBudget: '1인 25~35만원',
-    popularThemes: ['커플', '뚜벅이', '실내'],
-    weatherTags: ['비오는날 실내', '뚜벅이 여행', '아이랑 여행'],
-    highlightCourseSlugs: [
-      '2n3d-couple',
-      '1day-city',
-      'seoul-palace-river-1day',
-    ],
-    placeSlugs: [
-      'ikseondong',
-      'gwangjang-market',
-      'seongsu',
-      'bukchon',
-      'gwanghwamun-square',
-      'banpo-hangang-park',
-    ],
-  },
-  busan: {
-    id: 'busan',
-    name: '부산',
-    subtitle: '부산 여행 가이드',
-    updatedAt: '2026-02-19',
-    recommendedDuration: '1박2일',
-    averageBudget: '1인 20~30만원',
-    popularThemes: ['바다', '맛집', '당일치기'],
-    weatherTags: ['실내 코스', '야경 코스', '뚜벅이'],
-    highlightCourseSlugs: ['busan-east-west-1n2d', 'busan-night-view-1day'],
-    placeSlugs: [
-      'gamcheon-village',
-      'huinnyeoul-tunnel',
-      'haeundae-beach',
-      'gwangalli-beach',
-    ],
-  },
-  jeju: {
-    id: 'jeju',
-    name: '제주',
-    subtitle: '제주 여행 가이드',
-    updatedAt: '2026-02-19',
-    recommendedDuration: '2박3일',
-    averageBudget: '1인 35~55만원',
-    popularThemes: ['렌트카', '자연', '가족'],
-    weatherTags: ['우천 대체', '가성비 숙소', '아이 동반'],
-    highlightCourseSlugs: ['jeju-east-coast-1day', 'jeju-west-drive-1day'],
-    placeSlugs: [
-      'seongsan-ilchulbong',
-      'seopjikoji',
-      'udo-island',
-      'osulloc',
-      'hyeopjae-beach',
-      'hallim-park',
-    ],
-  },
-  gangneung: {
-    id: 'gangneung',
-    name: '강릉',
-    subtitle: '강릉 여행 가이드',
-    updatedAt: '2026-02-19',
-    recommendedDuration: '1박2일',
-    averageBudget: '1인 18~28만원',
-    popularThemes: ['카페', '바다', '드라이브'],
-    weatherTags: ['비오는날', '당일치기', '맛집 중심'],
-    highlightCourseSlugs: [
-      'gangneung-coast-1day',
-      'gangneung-cafe-healing-1day',
-    ],
-    placeSlugs: [
-      'ojukheon',
-      'gyeongpo-beach',
-      'anmok-beach',
-      'chodang-sundubu-village',
-    ],
-  },
+const LEGACY_REGION_SUBTITLE: Record<string, string> = {
+  seoul: '서울 여행 가이드',
+  busan: '부산 여행 가이드',
+  jeju: '제주 여행 가이드',
+  gangneung: '강릉 여행 가이드',
 };
+
+const LEGACY_REGION_BUDGET: Record<string, string> = {
+  seoul: '1인 25~35만원',
+  busan: '1인 20~30만원',
+  jeju: '1인 35~55만원',
+  gangneung: '1인 18~28만원',
+};
+
+const LEGACY_REGION_DURATION: Record<string, string> = {
+  seoul: '2박3일',
+  busan: '1박2일',
+  jeju: '2박3일',
+  gangneung: '1박2일',
+};
+
+const LEGACY_REGION_THEMES: Record<string, string[]> = {
+  seoul: ['커플', '뚜벅이', '실내'],
+  busan: ['바다', '맛집', '당일치기'],
+  jeju: ['렌트카', '자연', '가족'],
+  gangneung: ['카페', '바다', '드라이브'],
+};
+
+const LEGACY_REGION_WEATHER_TAGS: Record<string, string[]> = {
+  seoul: ['비오는날 실내', '뚜벅이 여행', '아이랑 여행'],
+  busan: ['실내 코스', '야경 코스', '뚜벅이'],
+  jeju: ['우천 대체', '가성비 숙소', '아이 동반'],
+  gangneung: ['비오는날', '당일치기', '맛집 중심'],
+};
+
+const LEGACY_COMPANION_LABEL: Record<string, string> = {
+  solo: '혼자 여행',
+  couple: '커플',
+  friends: '친구 여행',
+  parents: '부모님과',
+  kids: '아이와',
+  family: '가족 여행',
+};
+
+export const COURSES: Record<string, RegionCourse> = Object.fromEntries(
+  Object.entries(LEGACY_COURSE_ID_MAP).map(([legacySlug, contentId]) => {
+    const course = CONTENT_COURSES[contentId];
+
+    return [
+      legacySlug,
+      {
+        slug: legacySlug,
+        title: course.title,
+        summary: course.summary,
+        budgetRange: course.budget.text ?? '',
+        difficulty:
+          course.difficulty === 1
+            ? '쉬움'
+            : course.difficulty === 2
+              ? '보통'
+              : '높음',
+        target: course.companions
+          .map((companion) => LEGACY_COMPANION_LABEL[companion])
+          .join(' · '),
+        days: course.days,
+        tips: course.tips,
+      },
+    ];
+  }),
+);
+
+export const PLACES: Record<string, RegionPlace> = Object.fromEntries(
+  Object.values(CONTENT_PLACES).map((place) => [
+    place.id,
+    {
+      slug: place.slug,
+      name: place.name,
+      address: place.address,
+      hours: place.legacy?.hours ?? place.hoursText,
+      fee: place.legacy?.fee ?? place.feeText,
+      stayDuration: place.legacy?.stayDuration ?? `${place.stayMinutes.min}분`,
+      bestVisitTime: place.legacy?.bestVisitTime ?? place.bestVisitText ?? '',
+      tips: place.tips,
+      nearbyPlaceSlugs: place.legacy?.nearbyPlaceSlugs ?? place.nearbyPlaceIds,
+      includedCourseSlugs: place.legacy?.includedCourseSlugs ?? [],
+    },
+  ]),
+);
+
+export const REGIONS: Record<string, Region> = Object.fromEntries(
+  Object.values(DESTINATIONS).map((destination) => [
+    destination.slug,
+    {
+      id: destination.slug,
+      name: destination.name,
+      subtitle:
+        LEGACY_REGION_SUBTITLE[destination.slug] ??
+        `${destination.name} 여행 가이드`,
+      updatedAt: destination.updatedAt,
+      recommendedDuration:
+        LEGACY_REGION_DURATION[destination.slug] ?? destination.tripLengths[0],
+      averageBudget: LEGACY_REGION_BUDGET[destination.slug] ?? '',
+      popularThemes:
+        LEGACY_REGION_THEMES[destination.slug] ?? destination.themes,
+      weatherTags: LEGACY_REGION_WEATHER_TAGS[destination.slug] ?? [],
+      highlightCourseSlugs:
+        LEGACY_HIGHLIGHT_COURSE_SLUGS[destination.slug] ?? [],
+      placeSlugs: Object.values(CONTENT_PLACES)
+        .filter((place) => place.regionId === destination.slug)
+        .map((place) => place.id),
+    },
+  ]),
+);
 
 export const REGION_IDS = Object.keys(REGIONS);
-
 export const regionList = REGION_IDS.map((id) => REGIONS[id]);

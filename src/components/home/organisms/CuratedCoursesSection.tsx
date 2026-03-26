@@ -1,13 +1,12 @@
 import { CourseCard } from '@/components/common';
-import { regionList } from '@/constants/region';
-import { findRegionCoursesBySlugs } from '@/utils/region';
+import { getLegacyCoursesBySlugs, legacyRegionList } from '@/utils/selectors';
 
 const CuratedCoursesSection = () => {
   // 지역별 대표 코스
-  const regionCourses = regionList
+  const regionCourses = legacyRegionList
     .map((region) => ({
       regionId: region.id,
-      courses: findRegionCoursesBySlugs(region.highlightCourseSlugs),
+      courses: getLegacyCoursesBySlugs(region.highlightCourseSlugs),
     }))
     .filter(({ courses }) => courses.length > 0);
 
@@ -30,7 +29,7 @@ const CuratedCoursesSection = () => {
       item,
     ): item is {
       regionId: string;
-      course: ReturnType<typeof findRegionCoursesBySlugs>[number];
+      course: ReturnType<typeof getLegacyCoursesBySlugs>[number];
     } => Boolean(item),
   );
 
