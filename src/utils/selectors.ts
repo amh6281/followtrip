@@ -32,20 +32,6 @@ const groupBy = <T>(
     return acc;
   }, {});
 
-// 목적지 원본 데이터를 그대로 꺼내 쓸 때 사용하는 셀렉터
-export const destinations = DESTINATIONS;
-
-// 장소 원본 데이터를 그대로 꺼내 쓸 때 사용하는 셀렉터
-export const places = PLACES;
-
-// 코스 원본 데이터를 그대로 꺼내 쓸 때 사용하는 셀렉터
-export const courses = COURSES;
-
-// 랜딩 원본 데이터를 그대로 꺼내 쓸 때 사용하는 셀렉터
-export const landings = LANDINGS;
-
-// 기존 지역 화면 호환용 레거시 지역 데이터
-export const legacyRegions = REGIONS;
 export const legacyRegionList = Object.values(REGIONS);
 
 // 각 콘텐츠 컬렉션의 리스트 형태
@@ -138,14 +124,6 @@ export const getCoursesByPlaceId = (placeId: string): CourseTemplate[] =>
   (coursesByPlaceId[placeId] ?? [])
     .map((courseId) => courseById(courseId))
     .filter((course): course is CourseTemplate => course !== null);
-
-// 지역과 장소 slug 조합으로 단일 장소
-export const findPlaceByRegionAndSlug = (
-  regionId: string,
-  placeSlug: string,
-): RegionPlace | null =>
-  getPlacesByRegionId(regionId).find((place) => place.slug === placeSlug) ??
-  null;
 
 // 지역과 코스 slug 조합으로 단일 코스
 export const findCourseByRegionAndSlug = (

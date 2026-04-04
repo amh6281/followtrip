@@ -223,23 +223,3 @@ export interface Region {
   highlightCourseSlugs: string[];
   placeSlugs: string[];
 }
-
-// 레거시 지역 타입
-export type LegacyRegion = Region;
-
-// 레거시 장소 타입
-export type LegacyRegionPlace = {
-  slug: string;
-  name: string;
-  address: string;
-  hours: string;
-  fee: string;
-  stayDuration: string;
-  bestVisitTime: string;
-  tips: string[];
-  nearbyPlaceSlugs: string[];
-  includedCourseSlugs: string[];
-};
-
-// 레거시 코스 타입
-export type LegacyRegionCourse = RegionCourse;
