@@ -2,10 +2,10 @@ import { Badge } from '../atoms';
 import { RegionStatCard } from '../molecules';
 
 interface HeroSectionProps {
-  regionCount: number;
+  courseCount: number;
 }
 
-const HeroSection = ({ regionCount }: HeroSectionProps) => {
+const HeroSection = ({ courseCount }: HeroSectionProps) => {
   return (
     <section className='border-border relative overflow-hidden border-b px-4 py-10 md:px-6 md:py-14'>
       <div className='bg-sunset/15 absolute -top-28 -right-20 h-64 w-64 rounded-full blur-3xl' />
@@ -29,7 +29,7 @@ const HeroSection = ({ regionCount }: HeroSectionProps) => {
           /> */}
         </div>
 
-        <RegionStatCard count={regionCount} />
+        <RegionStatCard count={courseCount} />
       </div>
     </section>
   );
