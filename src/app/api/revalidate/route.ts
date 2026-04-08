@@ -3,9 +3,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import {
   courseList,
   destinationList,
+  getFeaturedCoursesByRegionId,
   getLandingsByRegionId,
   getPlacesByRegionId,
-  regionById,
 } from '@/utils/selectors';
 
 type RevalidateRequestBody = {
@@ -53,7 +53,7 @@ const buildRegionPaths = (regionId: string): string[] => {
     (landing) => landing.indexable,
   );
   const courses = courseList.filter((course) => course.regionId === regionId);
-  const legacyRegion = regionById(regionId);
+  const featuredCourses = getFeaturedCoursesByRegionId(regionId);
 
   for (const place of places) {
     paths.push(
@@ -66,8 +66,8 @@ const buildRegionPaths = (regionId: string): string[] => {
     paths.push(`/destinations/${regionId}/courses/${course.slug}`);
   }
 
-  for (const courseSlug of legacyRegion?.highlightCourseSlugs ?? []) {
-    paths.push(`/${regionId}/${courseSlug}`);
+  for (const course of featuredCourses) {
+    paths.push(`/${regionId}/${course.slug}`);
   }
 
   for (const landing of landings) {

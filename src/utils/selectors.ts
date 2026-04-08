@@ -1,26 +1,16 @@
-import {
-  COURSES as LEGACY_COURSES,
-  PLACES as LEGACY_PLACES,
-  REGIONS,
-} from '@/constants/region';
 import { COURSES, courseList } from '@/content/courses';
 import { DESTINATIONS, destinationList } from '@/content/destinations';
 import { LANDINGS, landingList } from '@/content/landings';
 import { PLACES, placeList } from '@/content/places';
 import type {
-  RegionCourse as LegacyRegionCourse,
-  RegionPlace as LegacyRegionPlace,
-} from '@/types/region';
-import type {
+  Companion,
   CourseTemplate,
   Destination,
   LandingIntent,
   LandingPage,
-  Region,
   RegionPlace,
 } from '@/types/travel';
 
-// 공통 배열 데이터를 특정 키 기준으로 묶어주는 내부 헬퍼 함수
 const groupBy = <T>(
   items: T[],
   getKey: (item: T) => string,
@@ -32,27 +22,20 @@ const groupBy = <T>(
     return acc;
   }, {});
 
-export const legacyRegionList = Object.values(REGIONS);
-
-// 각 콘텐츠 컬렉션의 리스트 형태
 export { destinationList, placeList, courseList, landingList };
 
-// 지역별 장소 목록을 빠르게 조회하기 위한 파생 맵
 export const placesByRegionId = groupBy(placeList, (place) => place.regionId);
 
-// 지역별 코스 목록을 빠르게 조회하기 위한 파생 맵
 export const coursesByRegionId = groupBy(
   courseList,
   (course) => course.regionId,
 );
 
-// 지역별 랜딩 목록을 빠르게 조회하기 위한 파생 맵
 export const landingsByRegionId = groupBy(
   landingList,
   (landing) => landing.regionId,
 );
 
-// 특정 장소가 어떤 코스들에 포함되는지 역참조로 계산한 파생 맵
 export const coursesByPlaceId = courseList.reduce<Record<string, string[]>>(
   (acc, course) => {
     for (const day of course.days) {
@@ -69,63 +52,46 @@ export const coursesByPlaceId = courseList.reduce<Record<string, string[]>>(
   {},
 );
 
-// place id로 단일 장소를 조회
 export const placeById = (placeId: string): RegionPlace | null =>
   PLACES[placeId] ?? null;
 
-// course id로 단일 코스를 조회
 export const courseById = (courseId: string): CourseTemplate | null =>
   COURSES[courseId] ?? null;
 
-// landing id로 단일 랜딩 페이지를 조회
 export const landingById = (landingId: string): LandingPage | null =>
   LANDINGS[landingId] ?? null;
 
-// region id로 목적지 데이터를 조회
 export const destinationById = (regionId: string): Destination | null =>
   DESTINATIONS[regionId] ?? null;
 
-// region id로 레거시 지역 데이터를 조회
-export const regionById = (regionId: string): Region | null =>
-  REGIONS[regionId] ?? null;
-
-// 레거시 course slug로 단일 코스를 조회
-export const legacyCourseBySlug = (
-  courseSlug: string,
-): LegacyRegionCourse | null => LEGACY_COURSES[courseSlug] ?? null;
-
-// 레거시 place slug로 단일 장소를 조회
-export const legacyPlaceBySlug = (
-  placeSlug: string,
-): LegacyRegionPlace | null => LEGACY_PLACES[placeSlug] ?? null;
-
-// 레거시 course slug 배열을 실제 코스 배열로 변환
-export const getLegacyCoursesBySlugs = (
-  slugs: string[],
-): LegacyRegionCourse[] =>
-  slugs
-    .map((slug) => legacyCourseBySlug(slug))
-    .filter((course): course is LegacyRegionCourse => course !== null);
-
-// 특정 지역에 속한 장소 목록을 반환
 export const getPlacesByRegionId = (regionId: string): RegionPlace[] =>
   placesByRegionId[regionId] ?? [];
 
-// 특정 지역에 속한 코스 목록을 반환
 export const getCoursesByRegionId = (regionId: string): CourseTemplate[] =>
   coursesByRegionId[regionId] ?? [];
 
-// 특정 지역에 속한 랜딩 목록을 반환
 export const getLandingsByRegionId = (regionId: string): LandingPage[] =>
   landingsByRegionId[regionId] ?? [];
 
-// 특정 장소를 포함하는 코스 목록을 실제 코스 객체 배열로 반환
 export const getCoursesByPlaceId = (placeId: string): CourseTemplate[] =>
   (coursesByPlaceId[placeId] ?? [])
     .map((courseId) => courseById(courseId))
     .filter((course): course is CourseTemplate => course !== null);
 
-// 지역과 코스 slug 조합으로 단일 코스
+export const getFeaturedCoursesByRegionId = (
+  regionId: string,
+): CourseTemplate[] => {
+  const destination = destinationById(regionId);
+
+  if (!destination) {
+    return [];
+  }
+
+  return destination.featuredCourseIds
+    .map((courseId) => courseById(courseId))
+    .filter((course): course is CourseTemplate => course !== null);
+};
+
 export const findCourseByRegionAndSlug = (
   regionId: string,
   courseSlug: string,
@@ -133,7 +99,6 @@ export const findCourseByRegionAndSlug = (
   getCoursesByRegionId(regionId).find((course) => course.slug === courseSlug) ??
   null;
 
-// 지역과 랜딩 slug 조합으로 단일 랜딩
 export const findLandingByRegionAndSlug = (
   regionId: string,
   landingSlug: string,
@@ -142,7 +107,6 @@ export const findLandingByRegionAndSlug = (
     (landing) => landing.slug === landingSlug,
   ) ?? null;
 
-// 랜딩의 intent가 주어진 검색 조건과 맞는지 검사하는 내부 헬퍼 함수
 const matchesIntent = (
   landing: LandingPage,
   intent: Partial<LandingIntent>,
@@ -192,7 +156,6 @@ const matchesIntent = (
   return true;
 };
 
-// intent 조건과 지역 조건에 맞는 랜딩 목록을 필터링
 export const findLandings = (
   intent: Partial<LandingIntent> = {},
   regionId?: string,
@@ -205,8 +168,35 @@ export const findLandings = (
     return matchesIntent(landing, intent);
   });
 
-// 현재 랜딩과 연결된 관련 랜딩 목록을 반환
 export const getRelatedLandings = (landing: LandingPage): LandingPage[] =>
   (landing.relatedLandingIds ?? [])
     .map((landingId) => landingById(landingId))
     .filter((related): related is LandingPage => related !== null);
+
+const companionLabels: Record<Companion, string> = {
+  solo: '혼자 여행',
+  couple: '커플',
+  friends: '친구 여행',
+  parents: '부모님과',
+  kids: '아이와',
+  family: '가족 여행',
+};
+
+export const formatCourseBudget = (course: CourseTemplate): string =>
+  course.budget.text ?? '예산 정보 준비 중';
+
+export const formatCourseDifficulty = (course: CourseTemplate): string =>
+  course.difficulty === 1 ? '쉬움' : course.difficulty === 2 ? '보통' : '높음';
+
+export const formatCourseAudience = (course: CourseTemplate): string =>
+  course.companions
+    .map((companion) => companionLabels[companion] ?? companion)
+    .join(' · ');
+
+export const formatPlaceStayDuration = (place: RegionPlace): string =>
+  place.stayMinutes.min === place.stayMinutes.max
+    ? `${place.stayMinutes.min}분`
+    : `${place.stayMinutes.min}~${place.stayMinutes.max}분`;
+
+export const formatPlaceBestVisitTime = (place: RegionPlace): string =>
+  place.bestVisitText ?? '방문 시간 정보 준비 중';
