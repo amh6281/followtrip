@@ -23,10 +23,6 @@ const HeroSection = ({ courseCount }: HeroSectionProps) => {
             실제 이동 동선을 기준으로 만든 코스와 장소 정보를 확인하고, 예산까지
             한 번에 계산해보세요.
           </p>
-          {/* <SearchInput
-            placeholder='지역, 테마, 기간 검색 (MVP 준비 중)'
-            disabled
-          /> */}
         </div>
 
         <RegionStatCard count={courseCount} />
