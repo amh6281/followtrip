@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import { ArrowRightIcon } from '@phosphor-icons/react/dist/ssr';
-import type { RegionCourse } from '@/types/region';
+import { formatCourseBudget, formatCourseDifficulty } from '@/utils/selectors';
+import type { CourseTemplate } from '@/types/travel';
 
 interface CourseCardProps {
-  course: RegionCourse;
+  course: CourseTemplate;
   href: string;
 }
 
@@ -24,7 +25,7 @@ const CourseCard = ({ course, href }: CourseCardProps) => {
 
       <div className='relative mt-4 flex items-center justify-between'>
         <p className='text-muted-foreground text-xs'>
-          {course.budgetRange} · {course.difficulty}
+          {formatCourseBudget(course)} · {formatCourseDifficulty(course)}
         </p>
         <span className='text-muted-foreground group-hover:text-primary inline-flex items-center gap-1 text-xs font-medium transition-colors'>
           자세히 보기

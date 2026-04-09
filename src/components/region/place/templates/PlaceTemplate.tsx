@@ -6,15 +6,15 @@ import {
   PlaceIncludedCoursesSection,
   PlaceNearbyPlacesSection,
 } from '../organisms';
-import type { RegionPlace, RegionCourse } from '@/types/region';
+import type { CourseTemplate, RegionPlace } from '@/types/travel';
 
 interface PlaceTemplateProps {
   place: RegionPlace;
   regionId: string;
   regionName: string;
-  includedCourses: RegionCourse[];
+  includedCourses: CourseTemplate[];
   backHref?: string;
-  courseHrefBuilder?: (course: RegionCourse) => string;
+  courseHrefBuilder?: (course: CourseTemplate) => string;
   placeHrefBuilder?: (place: RegionPlace) => string;
 }
 
@@ -54,7 +54,7 @@ const PlaceTemplate = ({
           />
 
           <PlaceNearbyPlacesSection
-            nearbyPlaceSlugs={place.nearbyPlaceSlugs}
+            nearbyPlaceIds={place.nearbyPlaceIds}
             regionId={regionId}
             placeHrefBuilder={placeHrefBuilder}
           />

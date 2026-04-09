@@ -4,7 +4,11 @@ import {
   MapPinIcon,
 } from '@phosphor-icons/react/dist/ssr';
 import { PlaceInfoItem } from '../molecules';
-import type { RegionPlace } from '@/types/region';
+import {
+  formatPlaceBestVisitTime,
+  formatPlaceStayDuration,
+} from '@/utils/selectors';
+import type { RegionPlace } from '@/types/travel';
 
 interface PlaceBasicInfoSectionProps {
   place: RegionPlace;
@@ -20,17 +24,17 @@ const PlaceBasicInfoSection = ({ place }: PlaceBasicInfoSectionProps) => {
         <PlaceInfoItem
           icon={<ClockIcon className='size-5 shrink-0' />}
           label='운영시간'
-          value={place.hours}
+          value={place.hoursText}
         />
         <PlaceInfoItem
           icon={<CurrencyDollarIcon className='size-5 shrink-0' />}
           label='입장료'
-          value={place.fee}
+          value={place.feeText}
         />
         <PlaceInfoItem
           icon={<MapPinIcon className='size-5 shrink-0' />}
           label='추천 체류·방문시간'
-          value={`${place.stayDuration} · ${place.bestVisitTime}`}
+          value={`${formatPlaceStayDuration(place)} · ${formatPlaceBestVisitTime(place)}`}
           gridColSpan={2}
         />
       </dl>

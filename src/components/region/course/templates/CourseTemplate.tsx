@@ -5,12 +5,12 @@ import {
   CourseScheduleSection,
   CourseTipsSection,
 } from '../organisms';
-import type { RegionCourse } from '@/types/region';
+import type { CourseTemplate as TravelCourseTemplate } from '@/types/travel';
 
 interface CourseTemplateProps {
   regionId: string;
   regionName: string;
-  course: RegionCourse;
+  course: TravelCourseTemplate;
   backHref?: string;
   placeHrefBuilder?: (placeId: string, placeSlug?: string) => string;
 }

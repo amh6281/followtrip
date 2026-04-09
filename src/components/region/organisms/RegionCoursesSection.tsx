@@ -1,10 +1,10 @@
 import { CourseCard } from '@/components/common';
-import type { RegionCourse } from '@/types/region';
+import type { CourseTemplate } from '@/types/travel';
 
 interface RegionCoursesSectionProps {
   regionId: string;
   regionName: string;
-  courses: RegionCourse[];
+  courses: CourseTemplate[];
 }
 
 const RegionCoursesSection = ({

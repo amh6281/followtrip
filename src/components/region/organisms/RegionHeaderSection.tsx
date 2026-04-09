@@ -1,8 +1,8 @@
 import { BackLink } from '@/components/common';
-import type { Region } from '@/types/region';
+import type { Destination } from '@/types/travel';
 
 interface RegionHeaderSectionProps {
-  region: Region;
+  region: Destination;
 }
 
 const RegionHeaderSection = ({ region }: RegionHeaderSectionProps) => {
@@ -11,8 +11,9 @@ const RegionHeaderSection = ({ region }: RegionHeaderSectionProps) => {
       <BackLink href='/'>홈으로 돌아가기</BackLink>
       <div className='space-y-2'>
         <h1 className='text-foreground text-3xl font-bold tracking-tight md:text-4xl'>
-          {region.subtitle}
+          {region.name} 여행 가이드
         </h1>
+        <p className='text-muted-foreground text-sm'>{region.heroSummary}</p>
         <p className='text-muted-foreground text-sm'>
           {region.updatedAt} 업데이트
         </p>

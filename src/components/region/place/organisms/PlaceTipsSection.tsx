@@ -1,4 +1,4 @@
-import type { RegionPlace } from '@/types/region';
+import type { RegionPlace } from '@/types/travel';
 
 interface PlaceTipsSectionProps {
   tips: RegionPlace['tips'];

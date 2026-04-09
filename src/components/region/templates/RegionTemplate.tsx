@@ -4,13 +4,12 @@ import {
   RegionCoursesSection,
   RegionFilterSection,
 } from '../organisms';
-import type { Region } from '@/types/region';
-import type { RegionCourse } from '@/types/region';
+import type { CourseTemplate, Destination } from '@/types/travel';
 
 interface RegionTemplateProps {
   regionId: string;
-  region: Region;
-  courses: RegionCourse[];
+  region: Destination;
+  courses: CourseTemplate[];
 }
 
 const RegionTemplate = ({ regionId, region, courses }: RegionTemplateProps) => {
