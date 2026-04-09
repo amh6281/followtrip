@@ -1,7 +1,7 @@
 import Script from 'next/script';
 import { AdSlot } from '@/components/common';
 import { absoluteUrl, SITE_DESCRIPTION, SITE_NAME } from '@/utils/seo';
-import { courseList, legacyRegionList } from '@/utils/selectors';
+import { courseList, destinationList } from '@/utils/selectors';
 import {
   HeroSection,
   CuratedCoursesSection,
@@ -38,7 +38,7 @@ const HomeTemplate = () => {
 
           <CuratedCoursesSection />
 
-          <RegionCoursesSection regionList={legacyRegionList} />
+          <RegionCoursesSection regionList={destinationList} />
 
           <ToolsSection />
 

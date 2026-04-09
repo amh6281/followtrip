@@ -1,8 +1,8 @@
 import { RegionLinkCard } from '../molecules';
-import type { Region } from '@/types/region';
+import type { Destination } from '@/types/travel';
 
 interface RegionCoursesSectionProps {
-  regionList: Region[];
+  regionList: Destination[];
 }
 
 const RegionCoursesSection = ({ regionList }: RegionCoursesSectionProps) => {
@@ -14,8 +14,8 @@ const RegionCoursesSection = ({ regionList }: RegionCoursesSectionProps) => {
       <div className='grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4'>
         {regionList.map((region) => (
           <RegionLinkCard
-            key={region.id}
-            regionId={region.id}
+            key={region.slug}
+            regionId={region.slug}
             name={region.name}
           />
         ))}
