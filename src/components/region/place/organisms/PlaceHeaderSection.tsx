@@ -1,6 +1,6 @@
 import { MapPinIcon } from '@phosphor-icons/react/dist/ssr';
 import { BackLink } from '@/components/common';
-import type { RegionPlace } from '@/types/region';
+import type { RegionPlace } from '@/types/travel';
 
 interface PlaceHeaderSectionProps {
   place: RegionPlace;

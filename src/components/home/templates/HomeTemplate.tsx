@@ -1,7 +1,7 @@
 import Script from 'next/script';
 import { AdSlot } from '@/components/common';
 import { absoluteUrl, SITE_DESCRIPTION, SITE_NAME } from '@/utils/seo';
-import { legacyRegionList } from '@/utils/selectors';
+import { courseList, destinationList } from '@/utils/selectors';
 import {
   HeroSection,
   CuratedCoursesSection,
@@ -27,7 +27,7 @@ const HomeTemplate = () => {
         type='application/ld+json'
         dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }}
       />
-      <HeroSection regionCount={legacyRegionList.length} />
+      <HeroSection courseCount={courseList.length} />
 
       <div className='mx-auto max-w-6xl px-4 py-10 md:px-6 md:py-14'>
         <div className='flex flex-col gap-12 lg:gap-16'>
@@ -38,7 +38,7 @@ const HomeTemplate = () => {
 
           <CuratedCoursesSection />
 
-          <RegionCoursesSection regionList={legacyRegionList} />
+          <RegionCoursesSection regionList={destinationList} />
 
           <ToolsSection />
 

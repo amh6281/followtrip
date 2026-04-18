@@ -331,6 +331,185 @@ export const COURSES: Record<string, CourseTemplate> = {
       '안목 카페거리는 해 질 무렵 이후 좌석 대기가 생길 수 있습니다.',
     ],
   },
+  'seoul-night-food-1day': {
+    id: 'seoul-night-food-1day',
+    regionId: 'seoul',
+    slug: '야시장-먹방-하루',
+    title: '서울 야시장·먹방 하루 코스',
+    summary: '광장시장부터 을지로, 성수까지 이어지는 먹방 중심 코스',
+    tripLength: { nights: 0, days: 1 },
+    companions: ['friends', 'couple'],
+    themes: ['food', 'night-view', 'city'],
+    mobility: 'transit',
+    weatherFit: ['all', 'rain-friendly'],
+    budget: {
+      min: 80000,
+      max: 180000,
+      currency: 'KRW',
+      basis: 'perTrip',
+      level: 'low',
+      text: '8~18만원',
+    },
+    difficulty: 1,
+    days: [
+      {
+        title: 'Day 1',
+        schedule: [
+          { time: '17:00', placeId: 'gwangjang-market' },
+          { time: '19:30', placeId: 'euljiro' },
+          { time: '22:00', placeId: 'seongsu' },
+        ],
+      },
+    ],
+    tips: [
+      '광장시장은 저녁 시간대 혼잡도가 높아 현금 준비가 편합니다.',
+      '을지로는 골목 위주라 길 찾기 앱을 켜두는 것이 좋습니다.',
+    ],
+  },
+
+  'seoul-hongdae-1day': {
+    id: 'seoul-hongdae-1day',
+    regionId: 'seoul',
+    slug: '홍대-연남-하루',
+    title: '홍대·연남 감성 하루 코스',
+    summary: '홍대 거리와 연남동 카페를 중심으로 한 트렌디 코스',
+    tripLength: { nights: 0, days: 1 },
+    companions: ['friends', 'solo', 'couple'],
+    themes: ['cafe', 'shopping', 'city'],
+    mobility: 'walk',
+    weatherFit: ['all', 'rain-friendly'],
+    budget: {
+      min: 70000,
+      max: 150000,
+      currency: 'KRW',
+      basis: 'perTrip',
+      level: 'low',
+      text: '7~15만원',
+    },
+    difficulty: 1,
+    days: [
+      {
+        title: 'Day 1',
+        schedule: [
+          { time: '13:00', placeId: 'hongdae' },
+          { time: '16:00', placeId: 'yeonnam-dong' },
+          { time: '20:00', placeId: 'hongdae' },
+        ],
+      },
+    ],
+    tips: [
+      '주말 홍대는 매우 혼잡해 평일 방문이 더 쾌적합니다.',
+      '연남동은 골목 카페가 많아 미리 리스트를 정해두면 좋습니다.',
+    ],
+  },
+
+  'busan-cafe-drive-1day': {
+    id: 'busan-cafe-drive-1day',
+    regionId: 'busan',
+    slug: '카페-드라이브-하루',
+    title: '부산 카페 드라이브 코스',
+    summary: '기장과 해운대를 중심으로 한 바다뷰 카페 코스',
+    tripLength: { nights: 0, days: 1 },
+    companions: ['couple', 'friends'],
+    themes: ['cafe', 'ocean', 'drive'],
+    mobility: 'car',
+    weatherFit: ['sunny', 'cloudy'],
+    budget: {
+      min: 100000,
+      max: 200000,
+      currency: 'KRW',
+      basis: 'perTrip',
+      level: 'mid',
+      text: '10~20만원',
+    },
+    difficulty: 1,
+    days: [
+      {
+        title: 'Day 1',
+        schedule: [
+          { time: '11:00', placeId: 'gijang-cafe' },
+          { time: '15:00', placeId: 'haeundae-beach' },
+          { time: '18:30', placeId: 'gwangalli-beach' },
+        ],
+      },
+    ],
+    tips: [
+      '기장 카페는 주차 공간이 제한적이라 이른 방문이 좋습니다.',
+      '광안리는 야경 시간대 체류가 핵심입니다.',
+    ],
+  },
+
+  'jeju-south-healing-1day': {
+    id: 'jeju-south-healing-1day',
+    regionId: 'jeju',
+    slug: '남부-힐링-하루',
+    title: '제주 남부 힐링 코스',
+    summary: '서귀포 중심 자연·폭포·카페 코스',
+    tripLength: { nights: 0, days: 1 },
+    companions: ['couple', 'family', 'parents'],
+    themes: ['nature', 'healing', 'cafe'],
+    mobility: 'car',
+    weatherFit: ['all', 'rain-friendly'],
+    budget: {
+      min: 130000,
+      max: 250000,
+      currency: 'KRW',
+      basis: 'perTrip',
+      level: 'mid',
+      text: '13~25만원',
+    },
+    difficulty: 1,
+    days: [
+      {
+        title: 'Day 1',
+        schedule: [
+          { time: '10:00', placeId: 'cheonjeyeon-waterfall' },
+          { time: '13:00', placeId: 'jungmun' },
+          { time: '16:00', placeId: 'seogwipo-cafe' },
+        ],
+      },
+    ],
+    tips: [
+      '폭포 코스는 계단 이동이 있어 편한 신발이 필요합니다.',
+      '비 오는 날 오히려 분위기가 좋아지는 코스입니다.',
+    ],
+  },
+
+  'gangneung-sunrise-1day': {
+    id: 'gangneung-sunrise-1day',
+    regionId: 'gangneung',
+    slug: '일출-바다-하루',
+    title: '강릉 일출·바다 코스',
+    summary: '정동진 일출부터 카페까지 이어지는 힐링 코스',
+    tripLength: { nights: 0, days: 1 },
+    companions: ['couple', 'friends', 'solo'],
+    themes: ['ocean', 'healing', 'nature'],
+    mobility: 'car',
+    weatherFit: ['sunny', 'cloudy'],
+    budget: {
+      min: 90000,
+      max: 180000,
+      currency: 'KRW',
+      basis: 'perTrip',
+      level: 'low',
+      text: '9~18만원',
+    },
+    difficulty: 2,
+    days: [
+      {
+        title: 'Day 1',
+        schedule: [
+          { time: '05:30', placeId: 'jeongdongjin' },
+          { time: '10:00', placeId: 'gyeongpo-beach' },
+          { time: '14:00', placeId: 'anmok-beach' },
+        ],
+      },
+    ],
+    tips: [
+      '일출 시간은 계절마다 달라 사전 확인이 필수입니다.',
+      '이른 일정이라 전날 숙박을 고려하는 것이 좋습니다.',
+    ],
+  },
 };
 
 export const COURSE_IDS = Object.keys(COURSES);

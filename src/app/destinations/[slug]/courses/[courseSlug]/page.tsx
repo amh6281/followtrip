@@ -12,11 +12,6 @@ import {
   destinationById,
   findCourseByRegionAndSlug,
 } from '@/utils/selectors';
-import type { RegionCourse } from '@/types/region';
-import type {
-  Companion,
-  CourseTemplate as TravelCourseTemplate,
-} from '@/types/travel';
 
 interface DestinationCoursePageProps {
   params: Promise<{ slug: string; courseSlug: string }>;
@@ -29,33 +24,6 @@ const decodeRouteParam = (value: string) => {
     return value;
   }
 };
-
-const companionLabels: Record<Companion, string> = {
-  solo: '혼자 여행',
-  couple: '커플',
-  friends: '친구 여행',
-  parents: '부모님과',
-  kids: '아이와',
-  family: '가족 여행',
-};
-
-const toLegacyCourse = (course: TravelCourseTemplate): RegionCourse => ({
-  slug: course.slug,
-  title: course.title,
-  summary: course.summary,
-  budgetRange: course.budget.text ?? '예산 정보 준비 중',
-  difficulty:
-    course.difficulty === 1
-      ? '쉬움'
-      : course.difficulty === 2
-        ? '보통'
-        : '높음',
-  target: course.companions
-    .map((companion) => companionLabels[companion] ?? companion)
-    .join(' · '),
-  days: course.days,
-  tips: course.tips,
-});
 
 export const dynamicParams = false;
 
@@ -134,7 +102,7 @@ const DestinationCoursePage = async ({
       <CourseTemplate
         regionId={destination.slug}
         regionName={destination.name}
-        course={toLegacyCourse(course)}
+        course={course}
         backHref={`/destinations/${destination.slug}`}
         placeHrefBuilder={(placeId, placeSlug) =>
           `/destinations/${destination.slug}/places/${placeSlug ?? placeId}`

@@ -13,49 +13,10 @@ import {
   placeList,
   placeById,
 } from '@/utils/selectors';
-import type {
-  RegionCourse,
-  RegionPlace as LegacyRegionPlace,
-} from '@/types/region';
-import type { CourseTemplate, RegionPlace } from '@/types/travel';
 
 interface DestinationPlacePageProps {
   params: Promise<{ slug: string; placeId: string }>;
 }
-
-const toLegacyPlace = (place: RegionPlace): LegacyRegionPlace => ({
-  slug: place.slug,
-  name: place.name,
-  address: place.address,
-  hours: place.legacy?.hours ?? place.hoursText,
-  fee: place.legacy?.fee ?? place.feeText,
-  stayDuration:
-    place.legacy?.stayDuration ??
-    `${place.stayMinutes.min}~${place.stayMinutes.max}분`,
-  bestVisitTime:
-    place.legacy?.bestVisitTime ??
-    place.bestVisitText ??
-    place.bestTimeSlots[0],
-  tips: place.tips,
-  nearbyPlaceSlugs: place.legacy?.nearbyPlaceSlugs ?? place.nearbyPlaceIds,
-  includedCourseSlugs: [],
-});
-
-const toLegacyCourse = (course: CourseTemplate): RegionCourse => ({
-  slug: course.slug,
-  title: course.title,
-  summary: course.summary,
-  budgetRange: course.budget.text ?? '예산 정보 준비 중',
-  difficulty:
-    course.difficulty === 1
-      ? '쉬움'
-      : course.difficulty === 2
-        ? '보통'
-        : '높음',
-  target: course.companions.join(' · '),
-  days: course.days,
-  tips: course.tips,
-});
 
 export const dynamicParams = false;
 
@@ -93,7 +54,7 @@ const DestinationPlacePage = async ({ params }: DestinationPlacePageProps) => {
     notFound();
   }
 
-  const includedCourses = getCoursesByPlaceId(place.id).map(toLegacyCourse);
+  const includedCourses = getCoursesByPlaceId(place.id);
   const breadcrumbJsonLd = buildBreadcrumbListJsonLd([
     { name: '홈', path: '/' },
     { name: '목적지', path: '/destinations' },
@@ -127,14 +88,16 @@ const DestinationPlacePage = async ({ params }: DestinationPlacePageProps) => {
       />
 
       <PlaceTemplate
-        place={toLegacyPlace(place)}
+        place={place}
         regionId={destination.slug}
         regionName={destination.name}
         includedCourses={includedCourses}
         backHref={`/destinations/${destination.slug}`}
-        courseHrefBuilder={(course) => `/${destination.slug}/${course.slug}`}
+        courseHrefBuilder={(course) =>
+          `/destinations/${destination.slug}/courses/${course.slug}`
+        }
         placeHrefBuilder={(nearbyPlace) =>
-          `/destinations/${destination.slug}/places/${nearbyPlace.slug}`
+          `/destinations/${destination.slug}/places/${nearbyPlace.id}`
         }
       />
     </>

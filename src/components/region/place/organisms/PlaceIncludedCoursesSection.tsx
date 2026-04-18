@@ -1,10 +1,10 @@
 import { PlaceCourseLink } from '../molecules';
-import type { RegionCourse } from '@/types/region';
+import type { CourseTemplate } from '@/types/travel';
 
 interface PlaceIncludedCoursesSectionProps {
-  courses: RegionCourse[];
+  courses: CourseTemplate[];
   regionId: string;
-  courseHrefBuilder?: (course: RegionCourse) => string;
+  courseHrefBuilder?: (course: CourseTemplate) => string;
 }
 
 const PlaceIncludedCoursesSection = ({

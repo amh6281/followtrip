@@ -1,4 +1,4 @@
-import { legacyRegionList } from '@/utils/selectors';
+import { destinationList } from '@/utils/selectors';
 import { RegionFilterChip } from '../molecules';
 
 interface RegionFilterSectionProps {
@@ -12,12 +12,12 @@ const RegionFilterSection = ({ currentRegionId }: RegionFilterSectionProps) => {
         지역별 보기
       </h2>
       <div className='flex flex-wrap gap-2'>
-        {legacyRegionList.map((region) => (
+        {destinationList.map((region) => (
           <RegionFilterChip
-            key={region.id}
-            regionId={region.id}
+            key={region.slug}
+            regionId={region.slug}
             name={region.name}
-            isActive={region.id === currentRegionId}
+            isActive={region.slug === currentRegionId}
           />
         ))}
       </div>

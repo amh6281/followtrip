@@ -1,10 +1,14 @@
 import { BackLink } from '@/components/common';
-import type { RegionCourse } from '@/types/region';
+import {
+  formatCourseAudience,
+  formatCourseDifficulty,
+} from '@/utils/selectors';
+import type { CourseTemplate } from '@/types/travel';
 
 interface CourseHeaderSectionProps {
   regionId: string;
   regionName: string;
-  course: RegionCourse;
+  course: CourseTemplate;
   backHref?: string;
 }
 
@@ -25,7 +29,7 @@ const CourseHeaderSection = ({
         </BackLink>
         <div className='max-w-2xl space-y-3'>
           <p className='text-primary border-primary/30 bg-primary/10 inline-flex w-fit rounded-full border px-3 py-1 text-xs font-semibold tracking-wide uppercase'>
-            {course.difficulty} · {course.target}
+            {formatCourseDifficulty(course)} · {formatCourseAudience(course)}
           </p>
           <h1 className='text-foreground text-3xl leading-tight font-bold tracking-tight md:text-4xl'>
             {course.title}

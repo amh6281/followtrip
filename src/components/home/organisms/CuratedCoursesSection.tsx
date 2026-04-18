@@ -1,12 +1,16 @@
 import { CourseCard } from '@/components/common';
-import { getLegacyCoursesBySlugs, legacyRegionList } from '@/utils/selectors';
+import {
+  destinationList,
+  getFeaturedCoursesByRegionId,
+} from '@/utils/selectors';
+import type { CourseTemplate } from '@/types/travel';
 
 const CuratedCoursesSection = () => {
   // 지역별 대표 코스
-  const regionCourses = legacyRegionList
+  const regionCourses = destinationList
     .map((region) => ({
-      regionId: region.id,
-      courses: getLegacyCoursesBySlugs(region.highlightCourseSlugs),
+      regionId: region.slug,
+      courses: getFeaturedCoursesByRegionId(region.slug),
     }))
     .filter(({ courses }) => courses.length > 0);
 
@@ -29,7 +33,7 @@ const CuratedCoursesSection = () => {
       item,
     ): item is {
       regionId: string;
-      course: ReturnType<typeof getLegacyCoursesBySlugs>[number];
+      course: CourseTemplate;
     } => Boolean(item),
   );
 

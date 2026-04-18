@@ -1,7 +1,7 @@
-import type { RegionCourse } from '@/types/region';
+import type { CourseTemplate } from '@/types/travel';
 
 interface CourseTipsSectionProps {
-  tips: RegionCourse['tips'];
+  tips: CourseTemplate['tips'];
 }
 
 const CourseTipsSection = ({ tips }: CourseTipsSectionProps) => {

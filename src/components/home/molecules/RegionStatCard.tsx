@@ -6,7 +6,7 @@ interface RegionStatCardProps {
 
 const RegionStatCard = ({
   count,
-  label = '지역 수',
+  label = '여행 코스 수',
   subLabel = '업데이트 중',
 }: RegionStatCardProps) => {
   return (

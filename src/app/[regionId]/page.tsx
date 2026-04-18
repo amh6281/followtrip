@@ -2,9 +2,9 @@ import { notFound } from 'next/navigation';
 import RegionTemplate from '@/components/region/templates/RegionTemplate';
 import { buildPageMetadata } from '@/utils/seo';
 import {
-  getLegacyCoursesBySlugs,
-  legacyRegionList,
-  regionById,
+  destinationById,
+  destinationList,
+  getFeaturedCoursesByRegionId,
 } from '@/utils/selectors';
 
 interface RegionPageProps {
@@ -16,27 +16,27 @@ export const dynamicParams = false;
 
 // 빌드 시 regions 경로 정적 생성
 export async function generateStaticParams() {
-  return legacyRegionList.map((region) => ({ regionId: region.id }));
+  return destinationList.map((destination) => ({ regionId: destination.slug }));
 }
 
 // 각 region 페이지에 대한 metadata 생성
 export async function generateMetadata({ params }: RegionPageProps) {
   const { regionId } = await params;
-  const region = regionById(regionId);
+  const region = destinationById(regionId);
   if (!region) return {};
   return buildPageMetadata({
     title: `${region.name} 여행 가이드`,
-    description: `${region.subtitle}. 추천 일정 ${region.recommendedDuration}, 평균 예산 ${region.averageBudget}.`,
+    description: region.heroSummary,
     path: `/${regionId}`,
   });
 }
 
 const RegionPage = async ({ params }: RegionPageProps) => {
   const { regionId } = await params;
-  const region = regionById(regionId);
+  const region = destinationById(regionId);
   if (!region) notFound();
 
-  const courses = getLegacyCoursesBySlugs(region.highlightCourseSlugs);
+  const courses = getFeaturedCoursesByRegionId(regionId);
 
   return (
     <RegionTemplate regionId={regionId} region={region} courses={courses} />

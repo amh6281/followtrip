@@ -2,10 +2,11 @@ import { notFound } from 'next/navigation';
 import PlaceTemplate from '@/components/region/place/templates/PlaceTemplate';
 import { buildPageMetadata } from '@/utils/seo';
 import {
-  getLegacyCoursesBySlugs,
-  legacyPlaceBySlug,
-  legacyRegionList,
-  regionById,
+  destinationById,
+  destinationList,
+  getCoursesByPlaceId,
+  getPlacesByRegionId,
+  placeById,
 } from '@/utils/selectors';
 
 interface PlacePageProps {
@@ -17,10 +18,10 @@ export const dynamicParams = false;
 
 // 빌드 시 places 경로 정적 생성
 export async function generateStaticParams() {
-  return legacyRegionList.flatMap((region) =>
-    region.placeSlugs.map((placeId) => ({
-      regionId: region.id,
-      placeId,
+  return destinationList.flatMap((destination) =>
+    getPlacesByRegionId(destination.slug).map((place) => ({
+      regionId: destination.slug,
+      placeId: place.id,
     })),
   );
 }
@@ -28,26 +29,26 @@ export async function generateStaticParams() {
 // 각 place 페이지에 대한 metadata 생성
 export async function generateMetadata({ params }: PlacePageProps) {
   const { regionId, placeId } = await params;
-  const place = legacyPlaceBySlug(placeId);
-  const region = regionById(regionId);
-  const isValidPlace = region?.placeSlugs.includes(placeId);
+  const place = placeById(placeId);
+  const region = destinationById(regionId);
+  const isValidPlace = place?.regionId === regionId;
   if (!place || !region || !isValidPlace) return {};
   return buildPageMetadata({
     title: `${place.name} - ${region.name}`,
-    description: `${place.address}. 권장 체류 시간 ${place.stayDuration}, 추천 방문 시간 ${place.bestVisitTime}.`,
+    description: `${place.address}. ${place.bestVisitText ?? place.hoursText}`,
     path: `/${regionId}/place/${placeId}`,
   });
 }
 
 const PlacePage = async ({ params }: PlacePageProps) => {
   const { regionId, placeId } = await params;
-  const place = legacyPlaceBySlug(placeId);
-  const region = regionById(regionId);
-  const isValidPlace = region?.placeSlugs.includes(placeId);
+  const place = placeById(placeId);
+  const region = destinationById(regionId);
+  const isValidPlace = place?.regionId === regionId;
 
   if (!place || !region || !isValidPlace) notFound();
 
-  const includedCourses = getLegacyCoursesBySlugs(place.includedCourseSlugs);
+  const includedCourses = getCoursesByPlaceId(place.id);
 
   return (
     <PlaceTemplate

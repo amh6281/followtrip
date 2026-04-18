@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { MapPinIcon, CaretRightIcon } from '@phosphor-icons/react/dist/ssr';
-import type { RegionPlace } from '@/types/region';
+import type { RegionPlace } from '@/types/travel';
 
 interface CourseScheduleStepProps {
   time: string;
@@ -24,7 +24,7 @@ const CourseScheduleStep = ({
       </span>
       {place ? (
         <Link
-          href={placeHref ?? `/${regionId}/place/${place.slug}`}
+          href={placeHref ?? `/${regionId}/place/${place.id}`}
           className='text-foreground hover:text-primary flex flex-1 items-center gap-2 font-medium transition-colors'
         >
           <MapPinIcon className='size-4 shrink-0' />
